@@ -1,3 +1,10 @@
+import AboutSection from "./Components/aboutus";
+import Slider from "./Components/herosection";
+import PopularDestinations from "./Components/populardestination";
+import TabTourPackages from "./Components/tabtourpackages";
+import TestimonialsSection from "./Components/testimonial";
+import TourPackages from "./Components/tourpackages";
+
  
 
 
@@ -8,7 +15,12 @@ export default function Home() {
   
   return (
    <>
-   <h1>this is main home page</h1>
+   <Slider/>
+   <PopularDestinations/>
+   <TourPackages/>
+   <TabTourPackages/>
+   <AboutSection/>
+   <TestimonialsSection/>
    </>
   );
 }

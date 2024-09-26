@@ -1,5 +1,6 @@
  
 import { FaTwitter, FaInstagram, FaFacebook, FaPhone, FaEnvelope } from 'react-icons/fa';
+import Image from 'next/image';
 
 function Header() {
 

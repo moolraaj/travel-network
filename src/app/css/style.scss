@@ -1,0 +1,209 @@
+.slider {
+    position: relative;
+    width: 90%; 
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  /* Individual slide styling */
+  .slide {
+    display: none;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+    text-align: left;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .slide.active {
+    display: block;
+    opacity: 1;
+  }
+  
+  .slide h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .slide p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Button styling inside the slide */
+  button {
+    background-color: rgba(0, 112, 243, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: rgba(0, 91, 181, 0.8);
+  }
+  
+  /* Previous and Next button styling */
+  
+  .prev, .next {
+    position: absolute;
+    display:none;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  /* Auto-scroll transition effect */
+  .slider {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .slide {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .slide.active {
+    opacity: 1;
+  }
+
+  .container {
+    padding: 20px;
+  }
+  
+  .heading {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .subheading {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Tabs */
+  .tabContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .tab.active {
+    background-color: #008080;
+    color: white;
+  }
+  
+  .tab:hover {
+    background-color: #008080;
+    color: white;
+  }
+  
+  /* Packages */
+  .packagesContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .packageCard {
+    width: 250px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .packageImage {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .packageTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .packageRoute,
+  .packageDuration {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .packagePrice {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .originalPrice {
+    text-decoration: line-through;
+    color: red;
+    margin-left: 10px;
+  }
+  
+  .bookButton {
+    background-color: #008080;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .bookButton:hover {
+    background-color: #005555;
+  }
+  
+  .viewMoreButton {
+    display: block;
+    background-color: #008080;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 20px auto;
+  }
+  
+  .viewMoreButton:hover {
+    background-color: #005555;
+  }
+  
+  
