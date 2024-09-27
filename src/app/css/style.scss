@@ -1,7 +1,60 @@
-body{
+@import "variable";
+@import "mixins";
+
+@font-face {
+  font-family: "Nunito";
+  src: url("../../app/fonts/Nunito-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../../app/fonts/Nunito-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../../app/fonts/Nunito-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../../app/fonts/Nunito-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../../app/fonts/Nunito-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../../app/fonts/Nunito-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../../app//fonts/Nunito-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../../app/fonts/Nunito-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+body {
   padding: 0;
   margin: 0;
-  font-family: Nunito Regular;
+  font-family: "Nunito";
+  letter-spacing: 0.6px;
 }
 
 *,
@@ -10,13 +63,11 @@ body{
   box-sizing: border-box;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-
-
-.container{
+.container {
   max-width: 1320px;
   width: 100%;
   margin: auto;
@@ -24,86 +75,35 @@ a{
   box-sizing: border-box;
 }
 
-
-@font-face {
-  font-family: 'Nunito Black';
-  src: url('../fonts/Nunito-Black.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Nunito Regular';
-  src: url('../fonts/Nunito-Regular.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Nunito Black';
-  src: url('../fonts/Nunito-SemiBold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Nunito Black';
-  src: url('../fonts/Nunito-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
-}
-
-
-
 .header_wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 7px 30px;
 }
-
 
 .header_left_section ul li a {
   display: flex;
   column-gap: 10px;
   align-items: center;
   font-weight: 700;
-}
-
-
-.header_right_section ul {
-  display: flex;
-  list-style-type: none;
-  column-gap: 13px;
-  padding: 0px 30px;
-}
-
-.header_left-section ul {
-  display: flex;
-  list-style-type: none;
-  align-items: center;
-  margin: 0;
-  padding: 0px 31px;
+  font-size: 16px;
+  color: $white-color;
 }
 .header_left_section ul {
   display: flex;
-  column-gap: 10px;
   list-style-type: none;
   margin: 0px;
+  padding: 0px;
+  gap: 20px;
 }
-
-.header_wrapper svg {
-  color: white;
-  width: 20px;
+.header_left_section ul li {
+  border-right: 2px solid #fff;
+  padding-right: 20px;
 }
-
-.header_wrapper a {
-  color: white;
+.header_left_section ul li:last-child {
+  border-right: none;
 }
-
-.header_inner {
-  background: #046271;
-}
-
 .header_left-section ul li a {
   display: flex;
   align-items: center;
@@ -115,217 +115,225 @@ a{
   margin-right: 14px;
 }
 
+.header_right_section ul {
+  display: flex;
+  list-style-type: none;
+  column-gap: 13px;
+  margin: 0px;
+  li {
+    height: 30px;
+  }
+  
+}
 
 
+
+.header_wrapper svg {
+  color: white;
+  width: 20px;
+}
+.header_inner {
+  background: #046271;
+}
 
 
 
 .slider {
-    position: relative;
-    width: 90%; 
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-  }
-  
-  /* Individual slide styling */
-  .slide {
-    display: none;
-    height: 400px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    color: white;
-    padding: 20px;
-    text-align: left;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .slide.active {
-    display: block;
-    opacity: 1;
-  }
-  
-  .slide h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  
-  .slide p {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  /* Button styling inside the slide */
-  button {
-    background-color: rgba(0, 112, 243, 0.8);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  button:hover {
-    background-color: rgba(0, 91, 181, 0.8);
-  }
-  
-  /* Previous and Next button styling */
-  
-  .prev, .next {
-    position: absolute;
-    display:none;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 50%;
-  }
-  
-  .prev {
-    left: 10px;
-  }
-  
-  .next {
-    right: 10px;
-  }
-  
-  /* Auto-scroll transition effect */
-  .slider {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .slide {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
-  
-  .slide.active {
-    opacity: 1;
-  }
+  position: relative;
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
 
-  .container {
-    padding: 20px;
-  }
-  
-  .heading {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .subheading {
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  /* Tabs */
-  .tabContainer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .tab {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .tab.active {
-    background-color: #008080;
-    color: white;
-  }
-  
-  .tab:hover {
-    background-color: #008080;
-    color: white;
-  }
-  
-  /* Packages */
-  .packagesContainer {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .packageCard {
-    width: 250px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .packageImage {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-  }
-  
-  .packageTitle {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  
-  .packageRoute,
-  .packageDuration {
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .packagePrice {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  
-  .originalPrice {
-    text-decoration: line-through;
-    color: red;
-    margin-left: 10px;
-  }
-  
-  .bookButton {
-    background-color: #008080;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .bookButton:hover {
-    background-color: #005555;
-  }
-  
-  .viewMoreButton {
-    display: block;
-    background-color: #008080;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 20px auto;
-  }
-  
-  .viewMoreButton:hover {
-    background-color: #005555;
-  }
-  
-  
+/* Individual slide styling */
+.slide {
+  display: none;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  color: white;
+  padding: 20px;
+  text-align: left;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  display: block;
+  opacity: 1;
+}
+
+.slide h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.slide p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Button styling inside the slide */
+button {
+  background-color: rgba(0, 112, 243, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: rgba(0, 91, 181, 0.8);
+}
+
+/* Previous and Next button styling */
+
+.prev,
+.next {
+  position: absolute;
+  display: none;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50%;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Auto-scroll transition effect */
+.slide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.subheading {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Tabs */
+.tabContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.tab.active {
+  background-color: #008080;
+  color: white;
+}
+
+.tab:hover {
+  background-color: #008080;
+  color: white;
+}
+
+/* Packages */
+.packagesContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.packageCard {
+  width: 250px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.packageImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.packageTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.packageRoute,
+.packageDuration {
+  font-size: 14px;
+  color: #666;
+}
+
+.packagePrice {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.originalPrice {
+  text-decoration: line-through;
+  color: red;
+  margin-left: 10px;
+}
+
+.bookButton {
+  background-color: #008080;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.bookButton:hover {
+  background-color: #005555;
+}
+
+.viewMoreButton {
+  display: block;
+  background-color: #008080;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+
+.viewMoreButton:hover {
+  background-color: #005555;
+}
