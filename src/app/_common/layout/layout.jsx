@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../header/header'
 import Footer from '../footer/footer'
 import { EXPORT_ALL_APIS } from '@/utils/api/apis'
+import Navbar from '../header/navbar'
 
 
 function Layout({children}) {
@@ -20,6 +21,7 @@ function Layout({children}) {
   return (
     <>
     <Header result={result}/>
+    <Navbar result={result}/>
     {children}
     <Footer result={result}/>
 

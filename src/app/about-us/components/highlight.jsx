@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HighlightsSection = ({ result }) => {
-    console.log(result)
+  
 
     return (
         <section className="highlights">
