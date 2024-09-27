@@ -7,11 +7,11 @@ import { EXPORT_ALL_APIS } from '@/utils/api/apis'
 
 function Layout({children}) {
   let api=EXPORT_ALL_APIS()
-  let [data,setdata]=useState([])
+  let [result,setResult]=useState([])
   useEffect(()=>{
     let loadHeaderAndFooter=async()=>{
       let resp=await api.fetchHeaderFooterApi()
-      setdata(resp)
+      setResult(resp.data)
     }
 
     loadHeaderAndFooter()
@@ -19,9 +19,9 @@ function Layout({children}) {
   },[])
   return (
     <>
-    <Header data={data}/>
+    <Header result={result}/>
     {children}
-    <Footer data={data}/>
+    <Footer result={result}/>
 
     </>
   )
