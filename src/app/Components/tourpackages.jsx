@@ -1,7 +1,10 @@
 
-import React from 'react';
+import { AllPackages } from '@/context/contextProviders';
+import React, { useContext } from 'react';
 
-const TourPackages = ({ allPackages }) => {
+const TourPackages = () => {
+
+  let {allPackages}=useContext(AllPackages)
  
   const result = allPackages.flatMap((e) => e?.acf?.all_packages || []);
 

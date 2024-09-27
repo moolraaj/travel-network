@@ -1,8 +1,11 @@
-// components/PopularDestinations.js
+ 
 
-import React from 'react';
+import { AllPackages } from '@/context/contextProviders';
+import React, { useContext } from 'react';
 
-const PopularDestinations = ({destinations}) => {
+
+const PopularDestinations = () => {
+  let {destinations}=useContext(AllPackages)
   
   return (
     <div className="popular-destinations">
