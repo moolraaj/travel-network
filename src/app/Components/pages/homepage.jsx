@@ -1,38 +1,25 @@
 'use client'
-import React, {  useEffect, useState } from 'react'
+import React, {  useContext } from 'react'
 import Slider from '../herosection'
 import PopularDestinations from '../populardestination'
 import TourPackages from '../tourpackages'
 import TabTourPackages from '../tabtourpackages'
 import AboutSection from '../aboutus'
 import TestimonialsSection from '../testimonial'
-import { EXPORT_ALL_APIS } from '@/utils/api/apis'
- 
-
+import { AllPackages } from '@/context/contextProviders'
 const HomePage = () => {
 
-  let api=EXPORT_ALL_APIS()
-  let [result,setResult]=useState([])
- 
+  let {homePage}=useContext(AllPackages)
 
-  useEffect(()=>{
-
-    let loadHomePage=async()=>{
-      let resp=await api.fetchHomePage()
-      setResult(resp)
-    }
-     
-    loadHomePage()
- 
-  },[])
+   
   return (
     <>
-    <Slider result={result}/>
+    <Slider result={homePage}/>
    <PopularDestinations  />
    <TourPackages   />
    <TabTourPackages/>
-   <AboutSection result={result}/>
-   <TestimonialsSection result={result}/>
+   <AboutSection result={homePage}/>
+   <TestimonialsSection result={homePage}/>
    </>
   );
 };

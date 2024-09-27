@@ -1,23 +1,35 @@
 import React from 'react';
 
-const TourismInfoSection = () => {
+const TourismInfoSection = ({ result }) => {
     return (
         <section className="tourism-info">
             <div className="image-grid">
-                <img src="/images/aboutione.png" alt="Scenic Image 1" />
-                <img src="/images/aboutitwo.png" alt="Scenic Image 2" />
-                <img src="/images/aboutithree.png" alt="Scenic Image 3" />
-                <img src="/images/aboutifour.png" alt="Scenic Image 4" />
+                {result?.about_us_galleries.map((ele,index)=>{
+                    return  <img src={ele?.about_gallery_image} alt="about-image" key={index} />
+                })}
+               
             </div>
             <div className="info-text">
-                <h2>We have been in the tourism industry for more than 20 years</h2>
-                <p>Leave your guidebooks at home and dive into the local cultures that make each destination so special. We’ll connect you with our exclusive experiences.</p>
-                <ul>
-                    <li><strong>Book With Confidence</strong> - Each trip is carefully crafted to leave you free to live in the moment and enjoy your vacation.</li>
-                    <li><strong>Freedom To Discover, Confidence To Explore</strong> - Each trip is carefully crafted to leave you free to live in the moment and enjoy your vacation.</li>
-                </ul>
+                <h2>{result?.about_info_heading}</h2>
+                <p>{result?.about_info_para}</p>
+                <div className="infos_wrapper">
+                    {result?.about_info_repeater?.map((ele,index)=>{
+                        return  <div className="infos" key={index}>
+                        <div className="left_infos">
+                            <img src={ele?.info_image} alt='infos' />
+                        </div>
+                        <div className="right_infos">
+                            <h4>{ele?.info_heading}</h4>
+                            <p>{ele?.info_paragraph}</p>
+                        </div>
+                    </div>
+
+                    })}
+                </div>
             </div>
-        </section>
+
+ 
+        </section >
     );
 };
 
