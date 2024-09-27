@@ -29,26 +29,26 @@ export const EXPORT_ALL_APIS = () => {
         return result
     }
     const fetchDestinationsFilterPackages = async (slug) => {
-        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/destination?slug=${slug}`);
+        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/destination?slug=${slug}&fields=acf&acf_format=standard`);
         let result = await resp.json();
         let destinationId = result[0]?.id.toString()
         if (!destinationId) {
             console.log('no destination id found')
         } else {
 
-            let response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/packages?destination=${destinationId}`);
+            let response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/packages?destination=${destinationId}&fields=acf&acf_format=standard`);
             let filterResponse = await response.json()
             return filterResponse
         }
     };
     const fetchCategoriesFilterPackages = async (slug) => {
-        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/package_category?slug=${slug}`);
+        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/package_category?slug=${slug}&fields=acf&acf_format=standard`);
         let result = await resp.json();
         let categoryId = result[0]?.id.toString()
         if (!categoryId) {
             console.log('no category id found')
         } else {
-            let response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/packages?package_category=${categoryId}`);
+            let response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/packages?package_category=${categoryId}&fields=acf&acf_format=standard`);
             let filterResponse = await response.json()
             return filterResponse
         }

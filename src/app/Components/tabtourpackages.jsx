@@ -1,88 +1,66 @@
-'use client'
+'use client';
 import { AllPackages } from '@/context/contextProviders';
-import { useContext, useState } from 'react';
-
-const tourData = {
-  categories: [
-    { label: "Adventure", value: "adventure" },
-    { label: "Honeymoon", value: "honeymoon" },
-    { label: "Corporate", value: "corporate" },
-    { label: "Family", value: "family" },
-    { label: "Weekends", value: "weekends" },
-    { label: "Groups", value: "groups" }
-  ],
-  packages: [
-    {
-      title: "Exotic Weekend Tour In Manali",
-      route: "Delhi - Manali - Solang Valley",
-      duration: "3 Days / 4 Night",
-      price: "₹25,767",
-      originalPrice: "₹27,000",
-      imageUrl: "/images/paragliding.jpg"
-    },
-    {
-      title: "Exotic Weekend Tour In Manali",
-      route: "Delhi - Manali - Solang Valley",
-      duration: "3 Days / 4 Night",
-      price: "₹25,767",
-      originalPrice: "₹27,000",
-      imageUrl: "/images/balloon.jpg"
-    },
-    {
-      title: "Exotic Weekend Tour In Manali",
-      route: "Delhi - Manali - Solang Valley",
-      duration: "3 Days / 4 Night",
-      price: "₹25,767",
-      originalPrice: "₹27,000",
-      imageUrl: "/images/snow_trekking.jpg"
-    }
-  ]
-};
+import { EXPORT_ALL_APIS } from '@/utils/api/apis';
+import { useContext, useEffect, useState } from 'react';
 
 const TabTourPackages = () => {
-
-  let {categories=[]}=useContext(AllPackages)
+  const api = EXPORT_ALL_APIS();
+  const { categories = [] } = useContext(AllPackages);
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]?.slug);
+  const [packages, setPackages] = useState([]);
 
    
- 
+  const fetchPackages = async (slug) => {
+      const resp = await api.fetchCategoriesFilterPackages(slug);  
+      setPackages(resp);  
+  };
 
-  console.log(categories)
   
-  const [selectedCategory, setSelectedCategory] = useState('adventure');
+  useEffect(() => {
+    fetchPackages(selectedCategory);
+  }, [selectedCategory]);
+
+  
+  const result = packages?.flatMap((e) => e?.acf?.all_packages || []);
+
+  console.log(`result`)
+  console.log(result)
+  
 
   return (
     <div className="container">
       <h2 className="heading">Specialized Holiday Travel Tour Packages</h2>
       <p className="subheading">Vacations to make your experience enjoyable in India!</p>
 
-      {/* Categories */}
+      
       <div className="tabContainer">
-        {categories.map((category,index) => (
-      <button
-      key={index}
-      className={`tab ${selectedCategory === category.value ? 'active' : ''}`}
-      onClick={() => setSelectedCategory(category.slug)}
-    >
-      {category.name}
-    </button>
-    
+        {categories.slice(0,7).map((category, index) => (
+          <button
+            key={index}
+            className={`tab ${selectedCategory === category.slug ? 'active' : ''}`}
+            onClick={() => setSelectedCategory(category.slug)} 
+          >
+            {category.name}
+          </button>
         ))}
       </div>
 
-      {/* Packages */}
+    
       <div className="packagesContainer">
-        {tourData.packages.map((pkg, index) => (
-          <div key={index} className="packageCard">
-            <img src={pkg.imageUrl} alt={pkg.title} className="packageImage" />
-            <h3 className="packageTitle">{pkg.title}</h3>
-            <p className="packageRoute">{pkg.route}</p>
-            <p className="packageDuration">{pkg.duration}</p>
-            <p className="packagePrice">
-              From: {pkg.price} <span className="originalPrice">{pkg.originalPrice}</span>
-            </p>
-            <button className="bookButton">Book Now</button>
-          </div>
-        ))}
+        {result===undefined||result.length===0?('no packages found this relative category')
+          :(result?.map((pkg, index) => (
+            <div key={index} className="packageCard">
+              <img src={pkg.package_image} alt={pkg.package_title} className="packageImage" />
+              <h3 className="packageTitle">{pkg.package_title}</h3>
+              <p className="packageRoute">{pkg.package_route}</p>
+              <p className="packageDuration">{pkg.package_duration}</p>
+              <p className="packagePrice">
+                From: {pkg.package_price} <span className="originalPrice">{pkg.package_price}</span>
+              </p>
+              <button className="bookButton">Book Now</button>
+            </div>
+          )))
+       }
       </div>
 
       <button className="viewMoreButton">View More</button>
