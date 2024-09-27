@@ -1,24 +1,24 @@
 import React from 'react';
 
-const AboutSection = () => {
+const AboutSection = ({result}) => {
+
+   let aboutSection=result[0]?.acf 
+
   return (
     <section className="about-section">
       <div className="about-container">
+        <h2>{aboutSection?.about_section_heading}</h2>
+        
         <div className="about-images">
-          <img src="images/aboutusone.jpg" alt="Travel Image 1" />
-          <img src="images/aboutustwo.jpg" alt="Travel Image 2" />
+          {aboutSection?.about_section_images?.map((ele,index)=>{
+            return   <img src={ele?.about_section_left_image} alt="Travel Image 1" key={index}/>
+          })}
+           
         </div>
         <div className="about-content">
-          <h2>Explore the Globe with Travel Network!</h2>
-          <p>
-            Welcome to Travel Network, your trusted partner for unforgettable
-            travel experiences. We’re passionate about helping you create
-            memories that last a lifetime. Travel opens up a world of endless
-            possibilities, allowing us to explore new cultures, landscapes, and
-            experiences. Whether it’s wandering through bustling city streets,
-            hiking scenic mountains, or relaxing on serene beaches, every
-            destination offers its own unique charm.
-          </p>
+          <h2>{aboutSection?.about_section_sub_heading}</h2>
+          <h3>{aboutSection?.about_us_right_section_heading}</h3>
+          <p dangerouslySetInnerHTML={{__html:aboutSection?.about_us_right_section_paragraph}}></p>
         </div>
       </div>
     </section>

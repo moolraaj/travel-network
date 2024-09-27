@@ -9,17 +9,17 @@ export const EXPORT_ALL_APIS = () => {
     }
 
     const fetchAllDestinations = async () => {
-        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/destination`)
+        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/destination?fields=acf&acf_format=standard`)
         let result = await resp.json()
         return result
     }
     const fetchAllPackagecategories = async () => {
-        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/package_category`)
+        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/package_category?fields=acf&acf_format=standard`)
         let result = await resp.json()
         return result
     }
     const fetchAllPackages = async () => {
-        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/packages`)
+        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/packages?fields=acf&acf_format=standard`)
         let result = await resp.json()
         return result
     }
