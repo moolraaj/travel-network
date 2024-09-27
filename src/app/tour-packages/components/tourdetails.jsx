@@ -1,5 +1,6 @@
-import React from 'react'
 import TourPackages from '@/app/Components/tourpackages'
+import React from 'react'
+ 
 
 
 const TourDetails = () => {

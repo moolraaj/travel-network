@@ -1,5 +1,5 @@
  
-
+'use client'
 import { AllPackages } from '@/context/contextProviders';
 import React, { useContext } from 'react';
 

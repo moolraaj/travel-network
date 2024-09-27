@@ -7,7 +7,7 @@ import React, { createContext, useState, useEffect } from 'react';
 export const AllPackages = createContext();
 
 
-export function ContextProvider({ children }) {
+export function ContextProvider({ children}) {
     const api = EXPORT_ALL_APIS();
     const [destinations, setDestinations] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -32,7 +32,7 @@ export function ContextProvider({ children }) {
     }, []);
 
     return (
-        <AllPackages.Provider value={{ destinations, categories,allPackages }}>
+        <AllPackages.Provider value={{ destinations, categories, allPackages }}>
             {children}
         </AllPackages.Provider>
     );

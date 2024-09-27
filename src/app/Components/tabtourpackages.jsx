@@ -1,5 +1,6 @@
 'use client'
-import { useState } from 'react';
+import { AllPackages } from '@/context/contextProviders';
+import { useContext, useState } from 'react';
 
 const tourData = {
   categories: [
@@ -39,6 +40,14 @@ const tourData = {
 };
 
 const TabTourPackages = () => {
+
+  let {categories=[]}=useContext(AllPackages)
+
+   
+ 
+
+  console.log(categories)
+  
   const [selectedCategory, setSelectedCategory] = useState('adventure');
 
   return (
@@ -48,13 +57,13 @@ const TabTourPackages = () => {
 
       {/* Categories */}
       <div className="tabContainer">
-        {tourData.categories.map((category) => (
+        {categories.map((category,index) => (
       <button
-      key={category.value}
+      key={index}
       className={`tab ${selectedCategory === category.value ? 'active' : ''}`}
-      onClick={() => setSelectedCategory(category.value)}
+      onClick={() => setSelectedCategory(category.slug)}
     >
-      {category.label}
+      {category.name}
     </button>
     
         ))}
