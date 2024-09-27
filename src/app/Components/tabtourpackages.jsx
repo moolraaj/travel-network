@@ -1,82 +1,83 @@
-'use client';
-import { AllPackages } from '@/context/contextProviders';
-import { EXPORT_ALL_APIS } from '@/utils/api/apis';
-import { useContext, useEffect, useState } from 'react';
+'use client'
+import { useState } from 'react';
+
+const tourData = {
+  categories: [
+    { label: "Adventure", value: "adventure" },
+    { label: "Honeymoon", value: "honeymoon" },
+    { label: "Corporate", value: "corporate" },
+    { label: "Family", value: "family" },
+    { label: "Weekends", value: "weekends" },
+    { label: "Groups", value: "groups" }
+  ],
+  packages: [
+    {
+      title: "Exotic Weekend Tour In Manali",
+      route: "Delhi - Manali - Solang Valley",
+      duration: "3 Days / 4 Night",
+      price: "₹25,767",
+      originalPrice: "₹27,000",
+      imageUrl: "/images/holiday-1.png"
+    },
+    {
+      title: "Exotic Weekend Tour In Manali",
+      route: "Delhi - Manali - Solang Valley",
+      duration: "3 Days / 4 Night",
+      price: "₹25,767",
+      originalPrice: "₹27,000",
+      imageUrl: "/images/holiday-2.png"
+    },
+    {
+      title: "Exotic Weekend Tour In Manali",
+      route: "Delhi - Manali - Solang Valley",
+      duration: "3 Days / 4 Night",
+      price: "₹25,767",
+      originalPrice: "₹27,000",
+      imageUrl:  "/images/holiday-3.png"
+    }
+  ]
+};
 
 const TabTourPackages = () => {
-  const api = EXPORT_ALL_APIS();
-  const { categories = [] } = useContext(AllPackages);
-
-  const [selectedCategory, setSelectedCategory] = useState(null); // Initially null
-  const [packages, setPackages] = useState([]);
-
-  // Fetch packages based on the selected category
-  const fetchPackages = async (slug) => {
-    try {
-      const resp = await api.fetchCategoriesFilterPackages(slug);  
-      setPackages(resp);  
-    } catch (error) {
-      console.error("Error fetching packages:", error);
-    }
-  };
-
-  // Set default selected category and fetch packages when categories are available
-  useEffect(() => {
-    if (categories.length > 0) {
-      const defaultCategorySlug = categories[0].slug; // Set the first category as default
-      setSelectedCategory(defaultCategorySlug); // Update state
-      fetchPackages(defaultCategorySlug); // Fetch packages for the default category
-    }
-  }, [categories]);
-
-  // Fetch packages whenever selectedCategory changes
-  useEffect(() => {
-    if (selectedCategory) {
-      fetchPackages(selectedCategory);
-    }
-  }, [selectedCategory]);
-
-  const result = packages?.flatMap((e) => e?.acf?.all_packages || []);
+  const [selectedCategory, setSelectedCategory] = useState('adventure');
 
   return (
-    <div className="container">
-      <h2 className="heading">Specialized Holiday Travel Tour Packages</h2>
-      <p className="subheading">Vacations to make your experience enjoyable in India!</p>
+    <div className="container tab-tour-packages">
+      <h2>Specialized Holiday Travel Tour Packages</h2>
+      <p>Vacations to make your experience enjoyable in India!</p>
+      <div className='packages-container-box'> 
+        {/* Categories */}
+        <div className="tab-Container">
+          {tourData.categories.map((category) => (
+        <button
+        key={category.value}
+        className={`tab-packages ${selectedCategory === category.value ? 'active' : ''}`}
+        onClick={() => setSelectedCategory(category.value)}
+      >
+        {category.label}
+      </button>
+      
+          ))}
+        </div>
 
-      {/* Categories Tabs */}
-      <div className="tabContainer">
-        {categories.slice(0, 7).map((category, index) => (
-          <button
-            key={index}
-            className={`tab ${selectedCategory === category.slug ? 'active' : ''}`}
-            onClick={() => setSelectedCategory(category.slug)} // Update selectedCategory on click
-          >
-            {category.name}
-          </button>
-        ))}
-      </div>
-
-      {/* Packages Display */}
-      <div className="packagesContainer">
-        {result === undefined || result.length === 0 ? (
-          <p>No packages found for this category.</p>
-        ) : (
-          result.map((pkg, index) => (
+        {/* Packages */}
+        <div className="packagesContainer">
+          {tourData.packages.map((pkg, index) => (
             <div key={index} className="packageCard">
-              <img src={pkg.package_image} alt={pkg.package_title} className="packageImage" />
-              <h3 className="packageTitle">{pkg.package_title}</h3>
-              <p className="packageRoute">{pkg.package_route}</p>
-              <p className="packageDuration">{pkg.package_duration}</p>
+              <img src={pkg.imageUrl} alt={pkg.title} className="packageImage" />
+              <h3 className="packageTitle">{pkg.title}</h3>
+              <p className="packageRoute">{pkg.route}</p>
+              <p className="packageDuration">{pkg.duration}</p>
               <p className="packagePrice">
-                From: {pkg.package_price} <span className="originalPrice">{pkg.original_price}</span>
+                From: {pkg.price} <span className="originalPrice">{pkg.originalPrice}</span>
               </p>
               <button className="bookButton">Book Now</button>
             </div>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
 
-      <button className="viewMoreButton">View More</button>
+        <button className="viewMoreButton">View More</button>
+      </div>
     </div>
   );
 };

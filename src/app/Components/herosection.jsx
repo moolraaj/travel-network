@@ -1,49 +1,68 @@
-'use client';
+'use client'
 import React, { useState, useEffect } from 'react';
 
-const Slider = ({ result }) => {
- 
-  const slider = result[0]?.acf?.top_banner_gallery || [];  
+const Slider = () => {
+  const slides = [
+    {
+      heading: "Enjoy The Most Enjoyable Journey",
+      description: "Tour an international travel management company with 25 years of experience,  specializing in business and maritime travel.",
+      buttonText: "Book Now",
+      buttonLink: "/learn-more-1",
+      backgroundImage: "/images/slide-one.png",
+    },
+    {
+      heading: "Explore  beauty of the whole world",
+      description: "Tour an international travel management company with 25 years of experience,  specializing in business and maritime travel.",
+      buttonText: "Book Now",
+      buttonLink: "/learn-more-2",
+      backgroundImage: "/images/slide-two.png",
+    },
+    {
+      heading: "Enjoy The Most Enjoyable Journey",
+      description: "Tour an international travel management company with 25 years of experience,  specializing in business and maritime travel.",
+      buttonText: "Book Now",
+      buttonLink: "/learn-more-3",
+      backgroundImage: "/images/slide-three.png",
+    },
+  ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slider.length);
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slider.length) % slider.length);
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  // Auto-scroll effect every 5 seconds
   useEffect(() => {
-     
-    if (slider.length > 0) {
-      const interval = setInterval(nextSlide, 5000);
-      return () => clearInterval(interval);  
-    }
-  }, [slider]);  
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval); // Clear interval on component unmount
+  }, []);
 
   return (
     <div className="slider">
-      {slider.length > 0 ? (  
-        slider.map((slide, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentSlide ? "active" : ""}`}
-            style={{ backgroundImage: `url(${slide.banner_image})` }}
-          >
-            <h2>{slide.banner_heading}</h2>
-            <p>{slide.heading_paragraph}</p>
-            <a href={slide.banner_button_link}>
-              <button>Book Now</button>
-            </a>
-          </div>
-        ))
-      ) : (
-        <p>No slides available</p> 
-      )}
-      <button className="prev" onClick={prevSlide} disabled={slider.length === 0}>❮</button>
-      <button className="next" onClick={nextSlide} disabled={slider.length === 0}>❯</button>
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`slide ${index === currentSlide ? "active" : ""}`}
+          style={{ backgroundImage: `url(${slide.backgroundImage})` }}
+        >
+           <div className="overlay"></div>
+            <div className="container hero-section-txt"> 
+              <h2>{slide.heading}</h2>
+              <p>{slide.description}</p>
+              <a href={slide.buttonLink}>
+                <button>{slide.buttonText}</button>
+              </a>
+            </div>
+          
+        </div>
+      ))}
+      {/* <button className="prev" onClick={prevSlide}>❮</button>
+      <button className="next" onClick={nextSlide}>❯</button> */}
     </div>
   );
 };
