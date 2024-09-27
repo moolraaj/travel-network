@@ -1,5 +1,13 @@
 export const EXPORT_ALL_APIS = () => {
 
+    ///////////////////////// fetch all pages
+
+    let fetchHomePage=async()=>{
+        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/pages?slug=home&fields=acf&acf_format=standard`)
+        let result=await resp.json()
+        return result
+    }
+
     const fetchAllDestinations = async () => {
         let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/destination`)
         let result = await resp.json()
@@ -70,6 +78,7 @@ export const EXPORT_ALL_APIS = () => {
         return result
     }
     return {
+        fetchHomePage,
         fetchAllDestinations,
         fetchAllPackagecategories,
         fetchAllPackages,

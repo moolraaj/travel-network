@@ -1,8 +1,12 @@
  
 import { FaTwitter, FaInstagram, FaFacebook, FaPhone, FaEnvelope } from 'react-icons/fa';
-import Image from 'next/image';
 
-function Header() {
+
+function Header({data}) {
+  let{header}=data.data
+  console.log(header)
+
+   
 
   return (
     <>
@@ -11,9 +15,9 @@ function Header() {
         <div className="header_wrapper">
           <div className="header_left-section">
             <ul>
-              <li><a href="mailto:">  <FaEnvelope size={30} />demo@gmail.com</a></li>
-              <li><a href="tel:+">        <FaPhone size={30} />
-              9999999999</a></li>
+              <li><a href={`mailto:${header.emailAddress}`}>  <FaEnvelope size={30} />{header.emailAddress}</a></li>
+              <li><a href={`tel:${header.phone_one}`}>        <FaPhone size={30} />
+              {header.phone_one}</a></li>
             </ul>
           </div>
           <div className="header_left_section">
