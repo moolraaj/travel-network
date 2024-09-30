@@ -1,6 +1,9 @@
 
-import React from 'react';
+'use client'
+import React, { useContext } from 'react';
 import packagesbg from '../../../public/images/background.png';
+import { AllPackages } from '@/context/contextProviders';
+
 const TourPackages = () => {
   const data = {
     tourPackages: {
@@ -43,21 +46,32 @@ const TourPackages = () => {
     }
   };
 
+  let {allPackages}=useContext(AllPackages)
+
+ 
+
+  const result = allPackages?.flatMap((e) => e?.acf?.all_packages || []);
+ 
+
+  
+
+   
+
   return (
   <div className='tour-packages-section'  style={{ backgroundImage: `url(${packagesbg.src})` }} >
     <div className="container tour-packages">
       <h2>{data.tourPackages.title}</h2>
       <p>{data.tourPackages.description}</p>
       <div className="packages-grid">
-        {data.tourPackages.packages.map((packageItem, index) => (
+        {result?.map((packageItem, index) => (
           <div className="package" key={index}>
             <div className='packages-image'>
-             <img src={packageItem.image} alt={packageItem.alt} />
+             <img src={packageItem.package_image} alt={packageItem.package_title} />
             </div>
             <div class="packages-inner-txt">
-              <h3>{packageItem.name}</h3>
-              <p>{packageItem.details}</p>
-              <div className='days-night'><strong>{packageItem.duration}</strong> <p> <span> From </span> {packageItem.price}  </p></div>
+              <h3>{packageItem?.package_title}</h3>
+              <p>{packageItem?.package_description}</p>
+              <div className='days-night'><strong>Days {packageItem.package_days}/ Nights {packageItem.packages_nights}</strong> <p> <span> From </span> {packageItem.package_price}  </p></div>
               <button>Book Now</button>
             </div>
           </div>

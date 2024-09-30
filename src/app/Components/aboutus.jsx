@@ -6,26 +6,20 @@ const data = {
     description: "Vacations to make your experience enjoyable in India!",
   }
 }
-const AboutSection = () => {
+const AboutSection = ({result}) => {
+  let aboutSection=result[0]?.acf 
   return (
     <div className='aboutus-bg'  style={{ backgroundImage: `url(${packagesbg.src})` }}>
       <section className="container about-section">
-      <h2>{data.aboutus.title}</h2>
+      <h2>{aboutSection?.about_section_heading}</h2>
         <div className="about-container">
           <div className="about-images">
             <img src="/images/about-images.png" alt="Travel Image 1" />
           </div>
           <div className="about-content">
-            <h3>Explore the Globe with Travel Network!</h3>
-            <p>
-              Welcome to Travel Network, your trusted partner for unforgettable
-              travel experiences. We’re passionate about helping you create
-              memories that last a lifetime. Travel opens up a world of endless
-              possibilities, allowing us to explore new cultures, landscapes, and
-              experiences. Whether it’s wandering through bustling city streets,
-              hiking scenic mountains, or relaxing on serene beaches, every
-              destination offers its own unique charm.
-            </p>
+          <h2>{aboutSection?.about_section_sub_heading}</h2>
+          <h3>{aboutSection?.about_us_right_section_heading}</h3>
+          <p dangerouslySetInnerHTML={{__html:aboutSection?.about_us_right_section_paragraph}}></p>
           </div>
         </div>
       </section>
