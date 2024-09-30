@@ -6,7 +6,7 @@ function DestinationsCard({ destinations }) {
 
     return (
         <>
-            <div className="destination_page_outer">
+            <div className="container destination_page_outer">
                 <div className="destination_page_inner">
                     <div className="destination_page_wrapper">
                         <div className="destinations-grid">

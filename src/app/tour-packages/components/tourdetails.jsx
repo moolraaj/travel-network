@@ -7,7 +7,7 @@ const TourDetails = ({ allPackages }) => {
 
   return (
     <>
-    <div className="tour_packages_outer">
+    <div className="container tour_packages_outer">
       <div className="tour_packages_inner">
         <div className="tour_packages_wrapper">
         <div className="packages-grid">

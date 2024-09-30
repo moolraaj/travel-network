@@ -30,7 +30,7 @@ function Navbar({ result }) {
               </ul>
             </div>
             <div className="navbar_section_third">
-              <button>book now</button>
+              <button>Book now</button>
             </div>
             <button className="toggle_button" onClick={toggleMenu}>
               {isMenuOpen ? '✖' : '☰'}
