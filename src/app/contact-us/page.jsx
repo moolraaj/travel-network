@@ -1,17 +1,13 @@
 import React from 'react'
-import ContactForm from './components/contactForm'
-import Breadcrumb from '../_common/breadcrumb/breadcrumb'
+import ContactPage from './components/contactPage'
+ 
 
 const Page = () => {
-  const title = 'Contact Us'
-  const image = '/bread.jfif'
+  
   return (
     <div>
-        <Breadcrumb
-          title={title}
-          image={image}
-        />
-        <ContactForm/>
+       <ContactPage/>
+      
     </div>
   )
 }

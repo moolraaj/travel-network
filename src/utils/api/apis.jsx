@@ -22,6 +22,11 @@ export const EXPORT_ALL_APIS = () => {
         let result=await resp.json()
         return result
     }
+    let fetchContactUsPage=async()=>{
+        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/pages?slug=contact-us&fields=acf&acf_format=standard`)
+        let result=await resp.json()
+        return result
+    }
 
     const fetchAllDestinations = async () => {
         let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/destination?fields=acf&acf_format=standard`)
@@ -97,6 +102,7 @@ export const EXPORT_ALL_APIS = () => {
         fetchAboutPage,
         fetchTourPackagesPage,
         fetchDestinationsPage,
+        fetchContactUsPage,
         fetchAllDestinations,
         fetchAllPackagecategories,
         fetchAllPackages,

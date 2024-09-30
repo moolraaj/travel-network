@@ -1,62 +1,33 @@
-const ContactForm = () => {
+import ContactUs from "./contactUs";
+
+const ContactForm = ({result}) => {
+  console.log(result)
   return (
     <div>
       <div className="top-three">
         <div className="">
         <img src="/Group 1000003622.png"/>
             <h2>Address</h2>
-            <p>Corporate Office: 401, Time Shoppers, Opp. Deepkamal Mall, Sarthana Jakatnaka, </p>
+            <p>{result?.address}</p>
         </div>
         <div className="">
         <img src="/Group 1000003653.png"/>
             <h2>Contact</h2>
+            {result?.contact.map((e,index)=>{
+              return <ul key={index}>
+                <li><a href={`tel:+91${e?.phone_number}`}>{e?.phone_number}</a></li>
+              </ul>
+            })}
             <p>Mobile : +918627814386</p>
-            <p>Email   :  travelnetwork@gmail.com</p>
+            <p>{result?.email_address}</p>
         </div>
         <div className="">
             <h2>85+ Expert Happy Clients</h2>
             <img src="/Group 1000003640.png"/>
         </div>
       </div>
-      <div className="contact-form-section">
-        <div className="left">
-          <h2>Send Us Message</h2>
-          <div className="form-container">
-            <form>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter Your Name"
-                className="input-field"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter Your Email"
-                className="input-field"
-                required
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number"
-                className="input-field"
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Enter Your Message"
-                className="input-field"
-                required
-              />
-              <button type="submit" className="btn">
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+     
+     <ContactUs/>
 
       <div className="right">
         <img src="/girl.png" alt="Contact Illustration" />
