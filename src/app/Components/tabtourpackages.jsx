@@ -66,7 +66,7 @@ const TabTourPackages = () => {
             <div key={index} className="packageCard">
               <img src={pkg.package_image} alt={pkg.package_title} className="packageImage" />
               <h3 className="packageTitle">{pkg.package_title}</h3>
-              <p className="packageRoute">{pkg.package_route}</p>
+              <p className="packageRoute">{pkg.package_root}</p>
               <p className="packageDuration">{pkg.package_duration}</p>
               <p className="packagePrice">
                 From: {pkg.package_price} <span className="originalPrice">{pkg.original_price}</span>
