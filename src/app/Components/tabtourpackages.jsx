@@ -2,9 +2,11 @@
 import { AllPackages } from '@/context/contextProviders';
 import { EXPORT_ALL_APIS } from '@/utils/api/apis';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
 
 const TabTourPackages = () => {
+  let router=useRouter()
   const api = EXPORT_ALL_APIS();
   const { categories = [] } = useContext(AllPackages);
 
@@ -80,7 +82,7 @@ const TabTourPackages = () => {
           })}
         </div>
 
-        <button className="viewMoreButton">View More</button>
+        <button className="viewMoreButton" onClick={()=>router.push('/tour-packages')} style={{cursor:'pointer'}}>View More</button>
       </div>
     </div>
   );

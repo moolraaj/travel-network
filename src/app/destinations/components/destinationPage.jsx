@@ -6,9 +6,7 @@ import { AllPackages } from '@/context/contextProviders'
 
 function DestinationPage() {
     let {destinationsPage,destinations}=useContext(AllPackages)
-   
     let result=destinationsPage?.map((e)=>e?.acf)
-    
   return (
      <>
      <TopBanner result={result[0]}/>
