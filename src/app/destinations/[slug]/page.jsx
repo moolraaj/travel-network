@@ -1,9 +1,14 @@
 import React from 'react'
+import DestinationsSlugPage from './components/destinationsSlugPage'
 
-function page({slug}) {
-    
+function page({params}) {
+    let {slug}=params
+
+
   return (
-    <div>page</div>
+    <>
+    <DestinationsSlugPage slug={slug}/>
+    </>
   )
 }
 

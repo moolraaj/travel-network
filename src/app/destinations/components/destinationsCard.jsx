@@ -1,0 +1,30 @@
+import Link from 'next/link'
+import React from 'react'
+
+function DestinationsCard({ destinations }) {
+     
+
+    return (
+        <>
+            <div className="destination_page_outer">
+                <div className="destination_page_inner">
+                    <div className="destination_page_wrapper">
+                        <div className="destinations-grid">
+                            {destinations?.map((destination, index) => (
+                                <div className="destination" key={index}>
+                                    <Link href={`/destinations/${destination?.slug}`}>
+                                        <img src={destination?.destination_image || 'no image found'} alt={destination.alt} />
+                                        <h3>{destination.name}</h3>
+                                    </Link>
+                                </div>
+
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default DestinationsCard

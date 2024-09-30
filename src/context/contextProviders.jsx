@@ -13,23 +13,29 @@ export function ContextProvider({ children }) {
     const [allPackages, setAllPackages] = useState([]);
     const [homePage, setHomePage] = useState([]);
     const [aboutPage, setAboutPage] = useState([]);
+    const [tourPage, setTourPage] = useState([]);
+    const [destinationsPage, setdestinationsPage] = useState([]);
    
 
  
     useEffect(() => {
         const loadPackagesData = async () => {
-                const [destinationsResp, categoriesResp, packagesResp, homePageResp, aboutPageResp] = await Promise.all([
+                const [destinationsResp, categoriesResp, packagesResp, homePageResp, aboutPageResp,tourPageResp,destinationPageResp] = await Promise.all([
                     api.fetchAllDestinations(),
                     api.fetchAllPackagecategories(),
                     api.fetchAllPackages(),
                     api.fetchHomePage(),
                     api.fetchAboutPage(),
+                    api.fetchTourPackagesPage(),
+                    api.fetchDestinationsPage()
                 ]);
                 setDestinations(destinationsResp);
                 setCategories(categoriesResp);
                 setAllPackages(packagesResp);
                 setHomePage(homePageResp);
                 setAboutPage(aboutPageResp);
+                setTourPage(tourPageResp)
+                setdestinationsPage(destinationPageResp)
              
         };
         loadPackagesData();  
@@ -46,6 +52,8 @@ export function ContextProvider({ children }) {
                 allPackages,
                 homePage,
                 aboutPage,
+                tourPage,
+                destinationsPage
             }}>
             {children}
         </AllPackages.Provider>

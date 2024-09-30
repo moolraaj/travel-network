@@ -11,7 +11,7 @@ const TabTourPackages = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);  
   const [packages, setPackages] = useState([]);
 
-   
+  // Fetch packages based on category slug
   const fetchPackages = async (slug) => {
     try {
       const resp = await api.fetchCategoriesFilterPackages(slug);
@@ -21,7 +21,7 @@ const TabTourPackages = () => {
     }
   };
 
-   
+  // Fetch packages for the first category by default
   useEffect(() => {
     if (categories.length > 0) {
       const defaultCategorySlug = categories[0].slug;

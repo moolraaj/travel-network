@@ -1,9 +1,10 @@
 import React from 'react'
+import DestinationPage from './components/destinationPage'
 
 function page() {
   return (
     <>
-    <h1>this is a destinations page</h1>
+    <DestinationPage/>
     </>
   )
 }
