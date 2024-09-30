@@ -140,6 +140,9 @@ function ContactUs() {
 
                     </div>
                 </div>
+                <div className="right">
+                    <img src="/images/contact-girl.png" alt="Contact Illustration" />
+                </div>
             </div>
         </>
     );
