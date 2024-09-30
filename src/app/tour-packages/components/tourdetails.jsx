@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 
 const TourDetails = ({ allPackages }) => {
-
   const api = EXPORT_ALL_APIS();
   const { categories = [] } = useContext(AllPackages);
 
@@ -14,13 +13,16 @@ const TourDetails = ({ allPackages }) => {
   const [packages, setPackages] = useState(allPackages);  
   const [isLoading, setIsLoading] = useState(false);  
 
-   
+  useEffect(() => {
+    // Ensure all packages are displayed on initial load
+    setPackages(allPackages);
+  }, [allPackages]);
+
   const fetchPackages = async (slug) => {
     setIsLoading(true);  
     try {
       if (slug === 'all') {
-       
-        setPackages(allPackages);
+        setPackages(allPackages);  // Show all packages if 'all' is selected
       } else {
         const resp = await api.fetchCategoriesFilterPackages(slug);
         setPackages(resp);
@@ -32,7 +34,6 @@ const TourDetails = ({ allPackages }) => {
     }
   };
 
-   
   const handleCategoryChange = (event) => {
     const categorySlug = event.target.value;
     setSelectedCategory(categorySlug);
@@ -44,7 +45,6 @@ const TourDetails = ({ allPackages }) => {
       <div className="tour_packages_inner">
         <div className="tour_packages_wrapper">
           <div className="filter_by_categories">
-         
             <select value={selectedCategory} onChange={handleCategoryChange}>
               <option value="all">All Categories</option>
               {categories.map((category, index) => (
@@ -56,7 +56,6 @@ const TourDetails = ({ allPackages }) => {
           </div>
 
           <div className="packages-grid">
-            
             {isLoading ? (
               <div>Loading...</div>
             ) : packages.length === 0 ? (

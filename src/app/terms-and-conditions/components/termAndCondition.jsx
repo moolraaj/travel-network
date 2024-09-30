@@ -10,6 +10,7 @@ function TermAndCondition({termPage}) {
       <div className="term_outer">
         <div className="term_inner">
             <div className="term_wrapper">
+          
                 {result[0]?.map((ele,index)=>{
                     return <div className='term_inner_wrapper' key={index}>
                         <p>{ele?.term_and_condition_para}</p>
