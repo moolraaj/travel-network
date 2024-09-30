@@ -1,16 +1,14 @@
 import React from 'react'
-import Breadcrumb from '../_common/breadcrumb/breadcrumb'
-import TourDetails from './components/tourdetails'
+import TourPackagepage from './components/tourPackagepage'
+
 
 
 const Page = () => {
-  const title = 'Contact Us'
-  const image = '/bread.jfif'
+
   return (
     <div>
-      <Breadcrumb/>
-       <TourDetails/>
-       
+      <TourPackagepage />
+
     </div>
   )
 }
