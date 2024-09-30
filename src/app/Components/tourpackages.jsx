@@ -3,6 +3,7 @@
 import React, { useContext } from 'react';
 import packagesbg from '../../../public/images/background.png';
 import { AllPackages } from '@/context/contextProviders';
+import Link from 'next/link';
 
 const TourPackages = () => {
   const data = {
@@ -20,7 +21,7 @@ const TourPackages = () => {
         },
         {
           name: "Majestic Kasol with Manali",
-          image:  "/images/destination-4.png",
+          image: "/images/destination-4.png",
           alt: "Majestic Kasol with Manali",
           details: "Exceptional Circuit of Leh Ladakh, Manali, and Lahaul to Chandigarh",
           duration: "3 Days / 2 Nights",
@@ -46,39 +47,52 @@ const TourPackages = () => {
     }
   };
 
-  let {allPackages}=useContext(AllPackages)
+  let { allPackages } = useContext(AllPackages)
 
- 
+  console.log(allPackages)
 
-  const result = allPackages?.flatMap((e) => e?.acf?.all_packages || []);
- 
 
-  
 
-   
+
+
+
+
+
+
 
   return (
-  <div className='tour-packages-section'  style={{ backgroundImage: `url(${packagesbg.src})` }} >
-    <div className="container tour-packages">
-      <h2>{data.tourPackages.title}</h2>
-      <p>{data.tourPackages.description}</p>
-      <div className="packages-grid">
-        {result?.map((packageItem, index) => (
-          <div className="package" key={index}>
-            <div className='packages-image'>
-             <img src={packageItem.package_image} alt={packageItem.package_title} />
-            </div>
-            <div class="packages-inner-txt">
-              <h3>{packageItem?.package_title}</h3>
-              <p>{packageItem?.package_description}</p>
-              <div className='days-night'><strong>Days {packageItem.package_days}/ Nights {packageItem.packages_nights}</strong> <p> <span> From </span> {packageItem.package_price}  </p></div>
-              <button>Book Now</button>
-            </div>
-          </div>
-        ))}
+    <div className='tour-packages-section' style={{ backgroundImage: `url(${packagesbg.src})` }} >
+      <div className="container tour-packages">
+        <h2>{data.tourPackages.title}</h2>
+        <p>{data.tourPackages.description}</p>
+        <div className="packages-grid">
+          {allPackages?.map((packageGroup, groupIndex) => {
+            const packagesArray = packageGroup?.acf?.all_packages;
+            if (Array.isArray(packagesArray)) {
+              return packagesArray.map((packageItem, index) => (
+                <div className="package" key={`${groupIndex}-${index}`}>
+                  <div className="packages-image">
+                    <img src={packageItem.package_image} alt={packageItem.package_title} />
+                  </div>
+                  <div className="packages-inner-txt">
+                    <h3>{packageItem?.package_title}</h3>
+                    <p>{packageItem?.package_description}</p>
+                    <div className="days-night">
+                      <strong>Days {packageItem.package_days} / Nights {packageItem.packages_nights}</strong>
+                      <p><span>From</span> {packageItem.package_price}</p>
+                    </div>
+                    <button>Book Now</button>
+                  </div>
+                </div>
+              ));
+            } else {
+              
+              return null;
+            }
+          })}
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 
