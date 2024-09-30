@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 function Navbar({ result }) {
@@ -9,7 +10,7 @@ function Navbar({ result }) {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Detect scroll and add/remove "active" class
+   
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -17,7 +18,7 @@ function Navbar({ result }) {
 
     window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll); // Clean up
+      window.removeEventListener('scroll', handleScroll);  
     };
   }, []);
 
@@ -26,41 +27,41 @@ function Navbar({ result }) {
       <div className={`navbar inner ${isScrolled ? 'active' : ''}`}>
         <div className="navbar_wrapper">
           <div className="navbar_section_first">
-            <a href={'/'}>
+            <Link href={'/'}>
               <img src={header?.siteLogoUrl} alt="logo" />
-            </a>
+            </Link>
           </div>
           <div className={`navbar_section_second ${isMenuOpen ? 'active' : ''}`}>
             <ul className="navbar">
               <li>
-                <a href={'/'} className={location.pathname === '/' ? 'active' : ''}>
+                <Link href={'/'} className={location.pathname === '/' ? 'active' : ''}>
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={'/about-us'} className={location.pathname === '/about-us' ? 'active' : ''}>
+                <Link href={'/about-us'} className={location.pathname === '/about-us' ? 'active' : ''}>
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={'/tour-packages'} className={location.pathname === '/tour-packages' ? 'active' : ''}>
+                <Link href={'/tour-packages'} className={location.pathname === '/tour-packages' ? 'active' : ''}>
                   Tour Packages
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={'/destinations'} className={location.pathname === '/destinations' ? 'active' : ''}>
+                <Link href={'/destinations'} className={location.pathname === '/destinations' ? 'active' : ''}>
                   Destinations
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={'/plan-your-trip'} className={location.pathname === '/plan-your-trip' ? 'active' : ''}>
+                <Link href={'/plan-your-trip'} className={location.pathname === '/plan-your-trip' ? 'active' : ''}>
                   Plan Your Trip
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={'/contact-us'} className={location.pathname === '/contact-us' ? 'active' : ''}>
+                <Link href={'/contact-us'} className={location.pathname === '/contact-us' ? 'active' : ''}>
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

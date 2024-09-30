@@ -11,7 +11,8 @@ const ContactForm = ({result}) => {
             <div className="icon-addres-card"> <FaMapMarkedAlt size={30}/> </div>
             <div className="card-txt">
               <h2>Address</h2>
-              <p>{result?.address}</p>
+              <a href={`mailto:${result?.address}`}> {result?.address}</a>
+             
             </div>
           </div>
 
