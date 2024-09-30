@@ -4,7 +4,7 @@ function TopBanner({result}) {
     console.log(result)
   return (
      <>
-     <div className="section_outer">
+     <div className="section_outer container-two">
         <div className="section_inner">
             <div className="section_wrapper">
                 <h1>{result?.section_top_banner_heading||'sorry no title found'}</h1>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const TourismInfoSection = ({ result }) => {
     return (
-        <section className="tourism-info">
+        <section className="tourism-info container">
             <div className="image-grid">
                 {result?.about_us_galleries.map((ele,index)=>{
                     return  <img src={ele?.about_gallery_image} alt="about-image" key={index} />

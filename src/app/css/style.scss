@@ -98,6 +98,12 @@ a {
   font-size: 16px;
   color: $white-color;
 }
+
+.image-grid img:first-child {
+  width: 100%;
+}
+
+
 .header_left_section ul {
   display: flex;
   list-style-type: none;
@@ -117,6 +123,135 @@ a {
   align-items: center;
   column-gap: 10px;
 }
+
+
+.section_wrapper img {
+  height: 300px;
+  width: 100%;
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+
+section.tourism-info {
+  display: flex;
+  column-gap: 7%;
+  align-items: center;
+}
+
+
+.infos {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.right_infos h4 {
+  margin: 0px;
+  font-size: 20px;
+}
+
+section.tourism-info {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+
+section.highlights {
+  background: #73cada29;
+  padding: 60px 10px;
+}
+
+.innersectionabout {
+  display: flex;
+  column-gap: 30px;
+}
+
+.hightlights_right h3 {
+  margin: 0px;
+  font-size: 25px;
+}
+
+
+
+
+.info-text p {
+  color: #222222;
+  margin-top: 0px !important;
+  margin-bottom: 0px;
+}
+
+.hightlights_right p {
+  margin-top: 0px;
+  padding-top: 10px;
+  color: #747474;
+}
+
+.hightlights_right h3 {
+  margin: 0px;
+}
+
+section.highlight {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+
+.right_infos p {
+  margin: 0px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+
+.image-grid img:not(:first-child) {
+  display: none;
+}
+
+
+
+
+
+.container-two {
+  width: 90%;
+  margin: auto;
+  margin-top: -105px;
+  z-index: -1;
+  position: relative;
+}
+
+.info-text h2 {
+  font-size: 36px;
+  color: $main-color;
+}
+
+.left_infos img {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+
+.infos_wrapper {
+  padding-top: 35px;
+}
+
+
+
+.section_wrapper h1 {
+  position: relative;
+  width: 74%;
+  margin: auto;
+  margin-bottom: -43px;
+  top: 151px;
+  color: white;
+  text-transform: capitalize;
+  font-size: 47px;
+}
+
+
+
+
 
 .header_left-section ul li {
   column-gap: 28px;
@@ -642,6 +777,54 @@ button:hover {
     padding: 20px;
   }
 
+
+  .info-text h2 {
+    font-size: 36px;
+    color: #046271;
+    margin-top: 0px;
+}
+
+
+
+
+  section.highlight {
+ 
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hightlights_right h3 {
+   margin: 0px;
+   font-size: 20px;
+}
+
+
+  section.tourism-info {
+    display: flex;
+    column-gap: 7%;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+}
+
+
+section.tourism-info {
+flex-wrap: wrap;
+}
+
+
+ 
+.section_wrapper h1 {
+  position: relative;
+  width: 92%;
+  margin: auto;
+  margin-bottom: -43px;
+  top: 79px;
+  color: white;
+  text-transform: capitalize;
+  font-size: 35px;
+}
+
   .navbar_section_second.active {
     display: flex;
   }
@@ -649,6 +832,15 @@ button:hover {
   .navbar_section_second ul {
     flex-direction: column;
     width: 100%;
+  }
+
+  .container-two {
+    width: 96%;
+    margin-top: 0px;
+   }
+
+   .section_wrapper img {
+    height: 200px;
   }
 
   .navbar_section_second ul li {
@@ -695,6 +887,14 @@ button:hover {
 
 @media (max-width: 767px) {
  
+  
+  .navbar.inner .navbar_section_second ul.navbar {
+    display: flex;
+    list-style-type: none;
+    gap: 2px;
+    align-items: baseline;
+    padding: 0px;
+}
   
   .header_right_section {
     display: none;
@@ -774,3 +974,6 @@ button:hover {
 
   
 }
+
+
+
