@@ -1,9 +1,8 @@
-'use client'
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import React, { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation'; // Use this in the app directory
-
+"use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation"; // Use this in the app directory
 
 function Navbar({ result }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,15 +20,15 @@ function Navbar({ result }) {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   // Get the current path
   const currentPath = router.pathname;
-  
+
   // Debugging: Log the current path
   useEffect(() => {
     console.log("Current Path:", currentPath);
@@ -42,39 +41,69 @@ function Navbar({ result }) {
 
   return (
     <div className="container">
-    <div className={`navbar inner ${isScrolled ? 'active' : ''}`}>
-      <div className="navbar_wrapper">
-        <div className="navbar_section_first">
-          <Link href="/">
-            <img src={header?.siteLogoUrl} alt="logo" />
-          </Link>
-        </div>
-    <div className="navbar_section_second">
-      <ul className="navbar">
-        <li>
-          <Link href="/" className={isActive('/') ? 'active' : ''}>Home</Link>
-        </li>
-        <li>
-          <Link href="/about-us" className={isActive('/about') ? 'active' : ''}>About Us</Link>
-        </li>
-        <li>
-          <Link href="/investor-corner" className={isActive('/investor-corner') ? 'active' : ''}>Investor’s Corner</Link>
-        </li>
-        <li>
-          <Link href="/about" className={isActive('/about') ? 'active' : ''}>About</Link>
-        </li>
-        <li>
-          <Link href="/contact-us" className={isActive('/contact-us') ? 'active' : ''}>Contact Us</Link>
-        </li>
-      </ul>
-    </div>
-    <div className="navbar_section_third">
+      <div className={`navbar inner ${isScrolled ? "active" : ""}`}>
+        <div className="navbar_wrapper">
+          <div className="navbar_section_first">
+            <Link href="/">
+              <img src={header?.siteLogoUrl} alt="logo" />
+            </Link>
+          </div>
+          <div className="navbar_section_second">
+            <ul className="navbar">
+              <li>
+                <Link href="/" className={isActive("/") ? "active" : ""}>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about-us"
+                  className={isActive("/about-us") ? "active" : ""}
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tour-packages"
+                  className={isActive("/tour-packages") ? "active" : ""}
+                >
+                  Tour Packages
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/destinations"
+                  className={isActive("/destinations") ? "active" : ""}
+                >
+                  Destinations
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/plan-your-trip"
+                  className={isActive("/plan-your-trip") ? "active" : ""}
+                >
+                  Plan Your Trip
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact-us"
+                  className={isActive("/contact-us") ? "active" : ""}
+                >
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="navbar_section_third">
             <button>Book now</button>
           </div>
           <button className="toggle_button" onClick={toggleMenu}>
-            {isMenuOpen ? '✖' : '☰'}
+            {isMenuOpen ? "✖" : "☰"}
           </button>
-           </div>
+        </div>
       </div>
     </div>
   );
