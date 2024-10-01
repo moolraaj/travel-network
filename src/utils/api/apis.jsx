@@ -37,6 +37,11 @@ export const EXPORT_ALL_APIS = () => {
         let result=await resp.json()
         return result
     }
+    let fetchPlanATripPage=async()=>{
+        let resp=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/pages?slug=plan-a-trip&fields=acf&acf_format=standard`)
+        let result=await resp.json()
+        return result
+    }
 
     const fetchAllDestinations = async () => {
         let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/destination?fields=acf&acf_format=standard`)
@@ -107,6 +112,14 @@ export const EXPORT_ALL_APIS = () => {
         let result = await resp.json()
         return result
     }
+    const submitPlanATripQuery = async (formData) => {
+        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/contact-form-7/v1/contact-forms/273/feedback`, {
+            method: 'POST',
+            body: formData
+        })
+        let result = await resp.json()
+        return result
+    }
     return {
         fetchHomePage,
         fetchAboutPage,
@@ -115,6 +128,7 @@ export const EXPORT_ALL_APIS = () => {
         fetchContactUsPage,
         fetchTermAndConditionPage,
         fetchPrivacyPolicyPage,
+        fetchPlanATripPage,
         fetchAllDestinations,
         fetchAllPackagecategories,
         fetchAllPackages,
@@ -122,6 +136,7 @@ export const EXPORT_ALL_APIS = () => {
         fetchDestinationsFilterPackages,
         fetchCategoriesFilterPackages,
         submitBookingQuery,
-        submitContactQuery
+        submitContactQuery,
+        submitPlanATripQuery
     }
 }

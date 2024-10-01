@@ -2,6 +2,7 @@
 
 'use client'
 import { AllPackages } from '@/context/contextProviders';
+import Link from 'next/link';
 import React, { useContext } from 'react';
 
 const PopularDestinations = () => {
@@ -15,8 +16,10 @@ const PopularDestinations = () => {
       <div className="destinations-grid">
       {destinations.slice(0,4).map((destination, index) => (
           <div className="destination" key={index}>
+            <Link href={`/destinations/${destination?.slug}`}>
             <img src={destination?.destination_image||'no image found'} alt={destination.alt} />
             <h3>{destination.name}</h3>
+            </Link>
           </div>
         ))}
       </div>    

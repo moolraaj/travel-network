@@ -1,9 +1,11 @@
+import BookingForm from '@/app/Components/bookingForm';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 function Navbar({ result }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   let { header = {} } = result;
 
   const toggleMenu = () => {
@@ -22,7 +24,12 @@ function Navbar({ result }) {
     };
   }, []);
 
+
+
   return (
+    <>
+    {isOpen&&<BookingForm setIsOpen={setIsOpen}/>}
+    
     <div className="container">
       <div className={`navbar inner ${isScrolled ? 'active' : ''}`}>
         <div className="navbar_wrapper">
@@ -66,7 +73,7 @@ function Navbar({ result }) {
             </ul>
           </div>
           <div className="navbar_section_third">
-            <button>Book now</button>
+            <button onClick={()=>setIsOpen(true)}>Book now</button>
           </div>
           <button className="toggle_button" onClick={toggleMenu}>
             {isMenuOpen ? '✖' : '☰'}
@@ -74,6 +81,7 @@ function Navbar({ result }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
