@@ -4,6 +4,7 @@ import { EXPORT_ALL_APIS } from '@/utils/api/apis';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
+import BookingForm from './bookingForm';
 
 const TabTourPackages = () => {
   let router=useRouter()
@@ -12,6 +13,7 @@ const TabTourPackages = () => {
 
   const [selectedCategory, setSelectedCategory] = useState(null);  
   const [packages, setPackages] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Fetch packages based on category slug
   const fetchPackages = async (slug) => {
@@ -40,6 +42,9 @@ const TabTourPackages = () => {
   }, [selectedCategory]);
 
   return (
+    <>
+    {isOpen&&<BookingForm setIsOpen={setIsOpen}/>}
+    
     <div className="container tab-tour-packages">
       <h2>Specialized Holiday Travel Tour Packages</h2>
       <p>Vacations to make your experience enjoyable in India!</p>
@@ -72,8 +77,8 @@ const TabTourPackages = () => {
                     <p className="packagePrice">
                       From: {pkg.package_price} <span className="originalPrice">{pkg.original_price}</span>
                     </p>
-                    <button className="bookButton">Book Now</button>
                   </Link>
+                    <button className="bookButton" onClick={()=>setIsOpen(true)}>Book Now</button>
                 </div>
               ));
             } else {
@@ -85,6 +90,7 @@ const TabTourPackages = () => {
         <button className="viewMoreButton" onClick={()=>router.push('/tour-packages')} style={{cursor:'pointer'}}>View More</button>
       </div>
     </div>
+    </>
   );
 };
 

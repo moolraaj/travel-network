@@ -1,10 +1,10 @@
 import React from 'react'
-import Main from './components/main'
+import PlanATrip from './components/main'
 
 const page = () => {
   return (
     <div>
-        <Main/>
+        <PlanATrip/>
     </div>
   )
 }

@@ -1,7 +1,9 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import BookingForm from './bookingForm';
 
 const Slider = ({ result }) => {
+  let [isOpen,setIsOpen]=useState(false)
   const slider = result[0]?.acf?.top_banner_gallery || [];
   const [currentSlide, setCurrentSlide] = useState(0);
   const nextSlide = () => {
@@ -18,7 +20,16 @@ const Slider = ({ result }) => {
     }
   }, [slider]);
 
+  const setFromHandler=()=>{
+    setIsOpen(true)
+    console.log('fgsdfgs')
+  }
+
+
+
   return (
+    <>
+    {isOpen&&<BookingForm setIsOpen={setIsOpen}/>}
     <div className="slider">
       {slider.length > 0 ? (
         slider.map((slide, index) => (
@@ -31,9 +42,9 @@ const Slider = ({ result }) => {
             <div className="container hero-section-txt">
               <h2>{slide.banner_heading}</h2>
               <p>{slide.heading_paragraph}</p>
-              <a href={slide.banner_button_link}>
-                <button>Book Now</button>
-              </a>
+              
+                <button onClick={setFromHandler}>Book Now</button>
+               
             </div>
           </div>
         ))
@@ -43,6 +54,7 @@ const Slider = ({ result }) => {
       {/* <button className="prev" onClick={prevSlide}>❮</button>
       <button className="next" onClick={nextSlide}>❯</button> */}
     </div>
+    </>
   );
 };
 

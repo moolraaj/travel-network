@@ -1,15 +1,20 @@
 "use client";
-import Link from "next/link";
+import BookingForm from '@/app/Components/bookingForm';
+import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+ 
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
-import { usePathname } from "next/navigation"; // Use this in the app directory
+ 
+import { usePathname } from "next/navigation";  
 
 function Navbar({ result }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  let { header = {} } = result;
   const router = useRouter();
 
-  const { header = {} } = result;
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -26,6 +31,7 @@ function Navbar({ result }) {
     };
   }, []);
 
+
   // Get the current path
   const currentPath = router.pathname;
 
@@ -34,12 +40,15 @@ function Navbar({ result }) {
     console.log("Current Path:", currentPath);
   }, [currentPath]);
 
-  const pathname = usePathname(); // Get the current path
+  const pathname = usePathname();  
 
   // Normalize the pathname to avoid issues with trailing slashes, etc.
   const isActive = (path) => pathname === path || pathname === `${path}/`;
 
   return (
+    <>
+    {isOpen&&<BookingForm setIsOpen={setIsOpen}/>}
+    
     <div className="container">
       <div className={`navbar inner ${isScrolled ? "active" : ""}`}>
         <div className="navbar_wrapper">
@@ -98,7 +107,7 @@ function Navbar({ result }) {
             </ul>
           </div>
           <div className="navbar_section_third">
-            <button>Book now</button>
+            <button onClick={()=>setIsOpen(true)}>Book now</button>
           </div>
           <button className="toggle_button" onClick={toggleMenu}>
             {isMenuOpen ? "✖" : "☰"}
@@ -106,6 +115,7 @@ function Navbar({ result }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
