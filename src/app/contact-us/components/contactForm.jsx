@@ -23,7 +23,11 @@ const ContactForm = ({result}) => {
                     {result?.contact.map((e,index)=>{
                       return <p key={index}> <a href={`tel:+91${e?.phone_number}`}>{e?.phone_number}</a> </p>
                     })}
-                  <p>{result?.email_address}</p>
+                   <p>
+                    <a href={`mailto:${result?.email_address}`}>
+                      {result?.email_address}
+                    </a>
+                  </p>
                 </div>
             </div>
 

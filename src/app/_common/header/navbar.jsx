@@ -12,18 +12,16 @@ function Navbar({ result }) {
     setIsMenuOpen(!isMenuOpen);
   };
 
-   
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);  
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
 
 
   return (
@@ -31,42 +29,57 @@ function Navbar({ result }) {
     {isOpen&&<BookingForm setIsOpen={setIsOpen}/>}
     
     <div className="container">
-      <div className={`navbar inner ${isScrolled ? 'active' : ''}`}>
+      <div className={`navbar inner ${isScrolled ? "active" : ""}`}>
         <div className="navbar_wrapper">
           <div className="navbar_section_first">
-            <Link href={'/'}>
+            <Link href="/">
               <img src={header?.siteLogoUrl} alt="logo" />
             </Link>
           </div>
-          <div className={`navbar_section_second ${isMenuOpen ? 'active' : ''}`}>
+          <div className="navbar_section_second">
             <ul className="navbar">
               <li>
-                <Link href={'/'} className={location.pathname === '/' ? 'active' : ''}>
+                <Link href="/" className={isActive("/") ? "active" : ""}>
                   Home
                 </Link>
               </li>
               <li>
-                <Link href={'/about-us'} className={location.pathname === '/about-us' ? 'active' : ''}>
+                <Link
+                  href="/about-us"
+                  className={isActive("/about-us") ? "active" : ""}
+                >
                   About
                 </Link>
               </li>
               <li>
-                <Link href={'/tour-packages'} className={location.pathname === '/tour-packages' ? 'active' : ''}>
+                <Link
+                  href="/tour-packages"
+                  className={isActive("/tour-packages") ? "active" : ""}
+                >
                   Tour Packages
                 </Link>
               </li>
               <li>
-                <Link href={'/destinations'} className={location.pathname === '/destinations' ? 'active' : ''}>
+                <Link
+                  href="/destinations"
+                  className={isActive("/destinations") ? "active" : ""}
+                >
                   Destinations
                 </Link>
               </li>
               <li>
-                <Link href={'/plan-your-trip'} className={location.pathname === '/plan-your-trip' ? 'active' : ''}>
+                <Link
+                  href="/plan-your-trip"
+                  className={isActive("/plan-your-trip") ? "active" : ""}
+                >
                   Plan Your Trip
                 </Link>
               </li>
               <li>
-                <Link href={'/contact-us'} className={location.pathname === '/contact-us' ? 'active' : ''}>
+                <Link
+                  href="/contact-us"
+                  className={isActive("/contact-us") ? "active" : ""}
+                >
                   Contact Us
                 </Link>
               </li>
@@ -76,7 +89,7 @@ function Navbar({ result }) {
             <button onClick={()=>setIsOpen(true)}>Book now</button>
           </div>
           <button className="toggle_button" onClick={toggleMenu}>
-            {isMenuOpen ? '✖' : '☰'}
+            {isMenuOpen ? "✖" : "☰"}
           </button>
         </div>
       </div>
