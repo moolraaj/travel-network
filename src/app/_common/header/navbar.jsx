@@ -1,12 +1,20 @@
+"use client";
 import BookingForm from '@/app/Components/bookingForm';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
+ 
+import { useRouter } from "next/navigation";
+ 
+import { usePathname } from "next/navigation";  
 
 function Navbar({ result }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   let { header = {} } = result;
+  const router = useRouter();
+
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -23,6 +31,19 @@ function Navbar({ result }) {
     };
   }, []);
 
+
+  // Get the current path
+  const currentPath = router.pathname;
+
+  // Debugging: Log the current path
+  useEffect(() => {
+    console.log("Current Path:", currentPath);
+  }, [currentPath]);
+
+  const pathname = usePathname();  
+
+  // Normalize the pathname to avoid issues with trailing slashes, etc.
+  const isActive = (path) => pathname === path || pathname === `${path}/`;
 
   return (
     <>

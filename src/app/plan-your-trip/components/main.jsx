@@ -6,10 +6,10 @@ import { useContext, useState } from 'react';
 
 const PlanATrip = () => {
 
-  let {planPage}=useContext(AllPackages)
-  let result=planPage?.map((e)=>e?.acf)
+  let { planPage } = useContext(AllPackages)
+  let result = planPage?.map((e) => e?.acf)
 
- 
+
 
   let api = EXPORT_ALL_APIS()
 
@@ -85,124 +85,139 @@ const PlanATrip = () => {
   return (
 
     <>
-    <TopBanner result={result[0]}/>
-    
-    <div className="plan_outer">
-      <div className="plan_inner">
-        <div className="plan_wrapper">
+      <TopBanner result={result[0]} />
 
-          <div className="plan_trip">
+      <div className="plan_outer">
+        <div className="plan_inner">
+          <div className="plan_wrapper">
 
-            <label>
-              Types Of Travel
-              <select name="type_of_travels" value={formData.type_of_travels} onChange={handleChange}>
-                <option value="">Choose your options</option>
-                <option value="Business">Business</option>
-                <option value="Honeymoon">Honeymoon</option>
-                <option value="Family Tour">Family Tour</option>
-                <option value="Adventure Tour">Adventure Tour</option>
-                <option value="Group Tour">Group Tour</option>
-                <option value="Sightseeing">Sightseeing</option>
-                <option value="Other">Other</option>
-              </select>
-            </label>
-          </div>
+            <div className="get_in_touch">
+              <h2>Get In Touch</h2>
+              <p>Drop us an email and we’ll get back to you within 48hrs…</p>
 
-          <div className="plan_trip">
+              <div className="plan_trip">
 
-            <label>
-              Conveyance Of Travel
-              <select name="conveyance_of_travel" value={formData.conveyance_of_travel} onChange={handleChange}>
-                <option value="">Choose your options</option>
-                <option value="By Taxi">By Taxi</option>
-                <option value="By Bus">By Bus</option>
-                <option value="By Volvo Bus">By Volvo Bus</option>
-                <option value="By Train">By Train</option>
-                <option value="By Air">By Air</option>
-              </select>
-            </label>
-          </div>
+                <label>
+                  Types Of Travel
+                  <select name="type_of_travels" value={formData.type_of_travels} onChange={handleChange}>
+                    <option value="">Choose your options</option>
+                    <option value="Business">Business</option>
+                    <option value="Honeymoon">Honeymoon</option>
+                    <option value="Family Tour">Family Tour</option>
+                    <option value="Adventure Tour">Adventure Tour</option>
+                    <option value="Group Tour">Group Tour</option>
+                    <option value="Sightseeing">Sightseeing</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+              </div>
 
-          <div className="plan_trip">
-            <label>
-              Date From
-              <input type="date" name="date_from" value={formData.date_from} onChange={handleChange} />
-            </label>
+              <div className="plan_trip">
 
-          </div>
+                <label>
+                  Conveyance Of Travel
+                  <select name="conveyance_of_travel" value={formData.conveyance_of_travel} onChange={handleChange}>
+                    <option value="">Choose your options</option>
+                    <option value="By Taxi">By Taxi</option>
+                    <option value="By Bus">By Bus</option>
+                    <option value="By Volvo Bus">By Volvo Bus</option>
+                    <option value="By Train">By Train</option>
+                    <option value="By Air">By Air</option>
+                  </select>
+                </label>
+              </div>
 
-          <div className="plan_trip">
-          <label>
-            Date To
-            <input type="date" name="date_to" value={formData.date_to} onChange={handleChange} />
-          </label>
-          </div>
-          <div className="plan_trip">
-            <label>
-              Adults
-              <input type="number" name="adults" value={formData.adults} onChange={handleChange} />
-            </label>
-          </div>
-          <div className="plan_trip">
-            <label>
-              Children
-              <input type="number" name="childs" value={formData.childs} onChange={handleChange} />
-            </label>
-          </div>
-          <div className="plan_trip">
-            <label>
-              Your Name
-              <input type="text" name="yourname" value={formData.yourname} onChange={handleChange} />
-              {errors.yourname && <span className='error'>{errors.yourname}</span>}
-            </label>
-          </div>
-          <div className="plan_trip">
-            <label>
-              Your Email
-              <input type="email" name="youremail" value={formData.youremail} onChange={handleChange} />
-              {errors.youremail && <span className='error'>{errors.youremail}</span>}
-            </label>
-          </div>
-          <div className="plan_trip">
-            <label>
-              Your Address
-              <textarea name="youraddress" value={formData.youraddress} onChange={handleChange} />
-            </label>
-          </div>
-          <div className="plan_trip">
-            <label>
-              City
-              <input type="text" name="yourcity" value={formData.yourcity} onChange={handleChange} />
-              {errors.yourcity && <span className='error'>{errors.yourcity}</span>}
-            </label>
-            <div className="plan_trip">
-              <label>
-                State
-                <input type="text" name="yourstate" value={formData.yourstate} onChange={handleChange} />
-                {errors.yourstate && <span className='error'>{errors.yourstate}</span>}
-              </label>
+              <div className="plan_trip">
+                <label>
+                  Date From
+                  <input type="date" name="date_from" value={formData.date_from} onChange={handleChange} />
+                </label>
+
+              </div>
+
+              <div className="plan_trip">
+                <label>
+                  Date To
+                  <input type="date" name="date_to" value={formData.date_to} onChange={handleChange} />
+                </label>
+              </div>
+              <div className="plan_trip">
+                <label>
+                  Adults
+                  <input type="number" name="adults" value={formData.adults} onChange={handleChange} />
+                </label>
+              </div>
+              <div className="plan_trip">
+                <label>
+                  Children
+                  <input type="number" name="childs" value={formData.childs} onChange={handleChange} />
+                </label>
+              </div>
             </div>
-            <div className="plan_trip">
-              <label>
-                Phone Number
-                <input type="tel" name="yournumber" value={formData.yournumber} onChange={handleChange} />
-                {errors.yournumber && <span className='error'>{errors.yournumber}</span>}
-              </label>
+
+
+
+
+            <div className="personalinofs">
+              <h2>Your Personal Information</h2>
+              <div className="plan_trip">
+
+                <label>
+                  Your Name
+                  <input type="text" name="yourname" value={formData.yourname} onChange={handleChange} />
+                  {errors.yourname && <span className='error'>{errors.yourname}</span>}
+                </label>
+              </div>
+              <div className="plan_trip">
+                <label>
+                  Your Email
+                  <input type="email" name="youremail" value={formData.youremail} onChange={handleChange} />
+                  {errors.youremail && <span className='error'>{errors.youremail}</span>}
+                </label>
+              </div>
+              <div className="plan_trip">
+                <label>
+                  Your Address
+                  <textarea name="youraddress" value={formData.youraddress} onChange={handleChange} />
+                </label>
+              </div>
+              <div className="plan_trip">
+                <label>
+                  City
+                  <input type="text" name="yourcity" value={formData.yourcity} onChange={handleChange} />
+                  {errors.yourcity && <span className='error'>{errors.yourcity}</span>}
+                </label>
+              </div>
+              <div className="plan_trip">
+                <label>
+                  State
+                  <input type="text" name="yourstate" value={formData.yourstate} onChange={handleChange} />
+                  {errors.yourstate && <span className='error'>{errors.yourstate}</span>}
+                </label>
+              </div>
+              <div className="plan_trip">
+                <label>
+                  Phone Number
+                  <input type="tel" name="yournumber" value={formData.yournumber} onChange={handleChange} />
+                  {errors.yournumber && <span className='error'>{errors.yournumber}</span>}
+                </label>
+              </div>
+
             </div>
 
             <button onClick={handleSubmit}>Submit</button>
           </div>
+
         </div>
-      </div>
       </div>
     </>
 
 
 
 
-      );
+  );
 };
 
 
 
-      export default PlanATrip;
+export default PlanATrip;
