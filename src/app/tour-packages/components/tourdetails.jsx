@@ -45,7 +45,7 @@ const TourDetails = ({ allPackages }) => {
       <div className="tour_packages_inner">
         <div className="tour_packages_wrapper">
           <div className="filter_by_categories">
-            <select value={selectedCategory} onChange={handleCategoryChange}>
+            <select value={selectedCategory} onChange={handleCategoryChange} className="custom-dropdown">
               <option value="all">All Categories</option>
               {categories.map((category, index) => (
                 <option key={index} value={category.slug}>
@@ -54,7 +54,6 @@ const TourDetails = ({ allPackages }) => {
               ))}
             </select>
           </div>
-
           <div className="packages-grid">
             {isLoading ? (
               <div>Loading...</div>
@@ -71,7 +70,11 @@ const TourDetails = ({ allPackages }) => {
                       </div>
                       <div className="packages-inner-txt">
                         <h3>{packageItem?.package_title}</h3>
-                        <p>{packageItem?.package_description}</p>
+                        <p>
+                            {packageItem?.package_description?.length > 80
+                            ? `${packageItem.package_description.slice(0, 80)}...`
+                            : packageItem.package_description}
+                        </p>
                         <div className="days-night">
                           <strong>Days {packageItem.package_days} / Nights {packageItem.packages_nights}</strong>
                           <p><span>From</span> {packageItem.package_price}</p>

@@ -76,7 +76,11 @@ const TourPackages = () => {
                   </div>
                   <div className="packages-inner-txt">
                     <h3>{packageItem?.package_title}</h3>
-                    <p>{packageItem?.package_description}</p>
+                    <p>
+                      {packageItem?.package_description?.length > 60
+                        ? `${packageItem.package_description.slice(0, 60)}...`
+                        : packageItem.package_description}
+                    </p>
                     <div className="days-night">
                       <strong>Days {packageItem.package_days} / Nights {packageItem.packages_nights}</strong>
                       <p><span>From</span> {packageItem.package_price}</p>

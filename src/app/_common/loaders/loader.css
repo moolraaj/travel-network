@@ -33,6 +33,7 @@
     font-size: 30px;
     color: #046271;
     font-weight: bold;
+    text-align: center;
     font-family: 'Comic Sans MS', cursive; 
     animation: text-blink 2s infinite;
   }
