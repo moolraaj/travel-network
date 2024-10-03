@@ -1,6 +1,6 @@
 'use client'
-
 import { AllPackages } from "@/context/contextProviders"
+import footerBg from '../../../../public/images/background.png'
 import { EXPORT_ALL_APIS } from "@/utils/api/apis"
 import Link from "next/link"
 import {   useEffect, useState } from "react"
@@ -25,7 +25,13 @@ function Footer({ result }) {
   
   return (
     <>
-      <section className="footer_section">
+
+      <section className="footer_section"  
+        style={{
+            backgroundImage: `url(${footerBg.src})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}>
         <div className='footer_outer'>
           <div className="footer_inner_section container">
             <div className='footer-top'>
@@ -94,13 +100,14 @@ function Footer({ result }) {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className='copyright_section'>
-            <div className='copyright_bar_inner'>
-              <p>{footer?.copyrightTextFirst}</p>
+            <div className='copyright_section'>
+              <div className='copyright_bar_inner'>
+                <p>{footer?.copyrightTextFirst}</p>
+              </div>
             </div>
           </div>
+
+        
         </div>
       </section>
     </>

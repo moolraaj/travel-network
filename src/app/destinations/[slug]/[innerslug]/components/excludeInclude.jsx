@@ -1,9 +1,9 @@
 import React from 'react'
-
+import { FaCheckCircle, FaTimesCircle} from 'react-icons/fa';
 function ExcludeInclude({ response }) {
     return (
         <>
-            <div className="package_inc_exc_wrapper">
+            <div className="container package_inc_exc_wrapper">
                 <h2 className='section_heading'>Tour Inclusions & Exclude</h2>
 
                 <div className="include_wrapper">
@@ -11,7 +11,7 @@ function ExcludeInclude({ response }) {
                     {response?.package_include?.map((e, index) => {
                         return <div className="inc" key={index}>
                             <ul>
-                                <li>{e?.tour_include}</li>
+                               <FaCheckCircle/> <li>{e?.tour_include}</li>
                             </ul>
 
                         </div>
@@ -22,7 +22,7 @@ function ExcludeInclude({ response }) {
                     {response?.package_exclude?.map((e, index) => {
                         return <div className="inc" key={index}>
                             <ul>
-                                <li>{e?.tour_exclude}</li>
+                                <FaTimesCircle/><li>{e?.tour_exclude}</li>
                             </ul>
                         </div>
                     })}
