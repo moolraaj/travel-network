@@ -1,4 +1,5 @@
 'use client';
+import Sidebar from '@/app/_common/sidebar/sidebar';
 import TopBanner from '@/app/Components/topBanner';
 import { AllPackages } from '@/context/contextProviders';
 import { EXPORT_ALL_APIS } from '@/utils/api/apis';
@@ -8,7 +9,7 @@ import { toast } from 'sonner';
 
 const PlanATrip = () => {
 
-  let { planPage, destinations } = useContext(AllPackages)
+  let { planPage } = useContext(AllPackages)
   let result = planPage?.map((e) => e?.acf)
 
 
@@ -208,20 +209,7 @@ const PlanATrip = () => {
           
             </div>
 
-            <div className="destination_section">
-
-              <h2><a href="/destinations"> popular destinations </a> </h2>
-
-              {destinations.slice(0, 3).map((destination, index) => (
-                <div className="destination_wrapper" key={index}>
-                  <Link href={`/destinations/${destination?.slug}`}>
-                    <img src={destination?.destination_image || 'no image found'} alt={destination.alt} />
-                    <h3>{destination.name}</h3>
-                  </Link>
-                </div>
-              ))}
-
-            </div>
+            <Sidebar/>
 
           
           </div>
