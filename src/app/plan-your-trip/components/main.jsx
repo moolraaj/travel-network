@@ -194,6 +194,7 @@ const PlanATrip = () => {
 
                 <button onClick={handleSubmit}>Submit</button>
               </div>
+            <button onClick={handleSubmit}>Submit</button>
             </div>
 
             <div className="destination_section">
@@ -211,6 +212,7 @@ const PlanATrip = () => {
 
             </div>
 
+          
           </div>
 
 

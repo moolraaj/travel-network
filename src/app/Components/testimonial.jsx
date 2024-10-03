@@ -1,22 +1,26 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { AllPackages } from '@/context/contextProviders';
+import { useState, useEffect, useContext } from 'react';
 
-const TestimonialsSection = ({ result }) => {
-  const testimonials = result[0]?.acf?.testimonial_section || [];
+const TestimonialsSection = () => {
+  let {testimonials}=useContext(AllPackages)
+ 
+  const result = testimonials.map((e)=>e?.acf)
+ 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const cardsToShow = 2; // Show 2 cards on larger screens
+  const cardsToShow = 2;  
 
-  // Function to go to the next slide
+  
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      (prevIndex + cardsToShow) % testimonials.length
+      (prevIndex + cardsToShow) % result.length
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      (prevIndex - cardsToShow + testimonials.length) % testimonials.length
+      (prevIndex - cardsToShow + result.length) % result.length
     );
   };
 
@@ -26,11 +30,11 @@ const TestimonialsSection = ({ result }) => {
   };
 
   useEffect(() => {
-    if (testimonials.length > 0) {
+    if (result.length > 0) {
       const interval = setInterval(nextSlide, 3000);
       return () => clearInterval(interval);
     }
-  }, [testimonials]);
+  }, [result]);
 
   // Determine how many cards to show based on screen size
   const getCardsToShow = () => {
@@ -46,24 +50,25 @@ const TestimonialsSection = ({ result }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  console.log(result)
   return (
     <section className="container testimonials-section">
       <h2>What Our Users Say</h2>
       <p>Vacations to make your experience enjoyable in India!</p>
       <div className="testimonialslider">
         <div className="testimonial-cards-section">
-          {testimonials.length > 0 ? (
+          {result.length > 0 ? (
             <>
               {/* Render first card */}
               <div className="testimonial-card" key={currentIndex}>
                 <img
-                  src={testimonials[currentIndex]?.testi_image || ''}
-                  alt={testimonials[currentIndex]?.testi_name || ''}
+                  src={result[currentIndex]?.testimonial_image || ''}
+                  alt={result[currentIndex]?.testimonials_designation || ''}
                 />
-                <h3>{testimonials[currentIndex]?.testi_name || ''}</h3>
-                <p>{testimonials[currentIndex]?.testi_description || ''}</p>
+                <h3>{result[currentIndex]?.testimonial_name || ''}</h3>
+                <p>{result[currentIndex]?.testimonial_description || ''}</p>
                 <div className="stars">
-                  {Array(testimonials[currentIndex]?.rating || 0)
+                  {Array(result[currentIndex]?.rating || 0)
                     .fill()
                     .map((_, i) => (
                       <span key={i}>⭐</span>
@@ -74,13 +79,13 @@ const TestimonialsSection = ({ result }) => {
               {getCardsToShow() === 2 && (
                 <div className="testimonial-card" key={currentIndex + 1}>
                   <img
-                    src={testimonials[(currentIndex + 1) % testimonials.length]?.testi_image || ''}
-                    alt={testimonials[(currentIndex + 1) % testimonials.length]?.testi_name || ''}
+                    src={result[(currentIndex + 1) % result.length]?.testimonial_image || ''}
+                    alt={result[(currentIndex + 1) % result.length]?.testimonials_designation || ''}
                   />
-                  <h3>{testimonials[(currentIndex + 1) % testimonials.length]?.testi_name || ''}</h3>
-                  <p>{testimonials[(currentIndex + 1) % testimonials.length]?.testi_description || ''}</p>
+                  <h3>{result[(currentIndex + 1) % result.length]?.testimonial_name || ''}</h3>
+                  <p>{result[(currentIndex + 1) % result.length]?.testimonial_description || ''}</p>
                   <div className="stars">
-                    {Array(testimonials[(currentIndex + 1) % testimonials.length]?.rating || 0)
+                    {Array(result[(currentIndex + 1) % result.length]?.rating || 0)
                       .fill()
                       .map((_, i) => (
                         <span key={i}>⭐</span>
