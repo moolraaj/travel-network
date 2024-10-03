@@ -57,7 +57,7 @@ function Navbar({ result }) {
               <img src={header?.siteLogoUrl} alt="logo" />
             </Link>
           </div>
-          <div className="navbar_section_second">
+          <div className={`navbar_section_second ${isMenuOpen ? 'active' : ''}`}>
             <ul className="navbar">
               <li>
                 <Link href="/" className={isActive("/") ? "active" : ""}>
