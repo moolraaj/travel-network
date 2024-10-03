@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-
+import { FaCheckCircle, FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
 function Itinerary({ response }) {
     const [openIndex, setOpenIndex] = useState(null);
 
@@ -11,22 +11,8 @@ function Itinerary({ response }) {
     return (
         <>
 
-            <div className="itinerary_wrapper">
-
-                <div className="top_section">
-                    <div className="top_left_section">
-                    <h3>{response?.package_title}</h3>
-                    <p dangerouslySetInnerHTML={{__html:response?.package_description}}></p>
-
-                    </div>
-                    <div className="top_right_section">
-                        <h3>{response?.package_days}</h3>
-                        <p>days</p>
-                    </div>
-                </div>
-
-
-                <h2 className='section_heading'>overview</h2>
+            <div className="container itinerary_wrapper">
+                <h2 className='section_heading'>Overview</h2>
                 {/* overview section*/}
                 <div className="overview_wrapper">
                     <p dangerouslySetInnerHTML={{ __html: response?.package_overview }}></p>
@@ -34,11 +20,11 @@ function Itinerary({ response }) {
 
                 {/*top highlights section */}
                 <div className="top_highlights">
-                    <h2 className='section_heading'>top highlights</h2>
+                    <h2 className='section_heading'>Top Highlights</h2>
                     {response?.top_highlights?.map((e, index) => {
 
                         return <ul className='highlights' key={index}>
-                            <li>{e?.trip_details}</li>
+                            <FaCheckCircle/> <li>{e?.trip_details}</li>
                         </ul>
                     })}
                 </div>
@@ -54,7 +40,7 @@ function Itinerary({ response }) {
                                 <div className="accordian_qst" onClick={() => toggleAccordion(index)}>
                                     <h3>{e?.itinerary_title}</h3>
                                     <span className={`accordion-icon ${isOpen ? 'open' : ''}`}>
-                                        {isOpen ? '-' : '+'}
+                                        {isOpen ? <FaMinusCircle/> : <FaPlusCircle/>}
                                     </span>
                                 </div>
                                 {isOpen && (
