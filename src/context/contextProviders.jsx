@@ -19,12 +19,13 @@ export function ContextProvider({ children }) {
     const [termPage, setTermPage] = useState([]);
     const [privacyPage, setPrivacyPage] = useState([]);
     const [planPage, setPlanPage] = useState([]);
+    const [testimonials, setTestimonilals] = useState([]);
    
 
  
     useEffect(() => {
         const loadPackagesData = async () => {
-                const [destinationsResp, categoriesResp, packagesResp, homePageResp, aboutPageResp,tourPageResp,destinationPageResp,contactPageResp,termPageResp,privacyPageResp,planPageResp] = await Promise.all([
+                const [destinationsResp, categoriesResp, packagesResp, homePageResp, aboutPageResp,tourPageResp,destinationPageResp,contactPageResp,termPageResp,privacyPageResp,planPageResp,testiPostResp] = await Promise.all([
                     api.fetchAllDestinations(),
                     api.fetchAllPackagecategories(),
                     api.fetchAllPackages(),
@@ -35,7 +36,8 @@ export function ContextProvider({ children }) {
                     api.fetchContactUsPage(),
                     api.fetchTermAndConditionPage(),
                     api.fetchPrivacyPolicyPage(),
-                    api.fetchPlanATripPage()
+                    api.fetchPlanATripPage(),
+                    api.fetchTestimonialsApi()
                    
                 ]);
                 setDestinations(destinationsResp);
@@ -49,6 +51,7 @@ export function ContextProvider({ children }) {
                 setTermPage(termPageResp)
                 setPrivacyPage(privacyPageResp)
                 setPlanPage(planPageResp)
+                setTestimonilals(testiPostResp)
              
         };
         loadPackagesData();  
@@ -70,7 +73,8 @@ export function ContextProvider({ children }) {
                 contactPage,
                 termPage,
                 privacyPage,
-                planPage
+                planPage,
+                testimonials
             }}>
             {children}
         </AllPackages.Provider>

@@ -1,0 +1,35 @@
+import React from 'react'
+
+function ExcludeInclude({ response }) {
+    return (
+        <>
+            <div className="package_inc_exc_wrapper">
+                <h2 className='section_heading'>Tour Inclusions & Exclude</h2>
+
+                <div className="include_wrapper">
+                    <h3 className='package_inc_exc'>TOUR INCLUSIONS</h3>
+                    {response?.package_include?.map((e, index) => {
+                        return <div className="inc" key={index}>
+                            <ul>
+                                <li>{e?.tour_include}</li>
+                            </ul>
+
+                        </div>
+                    })}
+                </div>
+                <div className="exclude_wrapper">
+                    <h3 className='package_inc_exc'>TOUR EXCLUSIONS</h3>
+                    {response?.package_exclude?.map((e, index) => {
+                        return <div className="inc" key={index}>
+                            <ul>
+                                <li>{e?.tour_exclude}</li>
+                            </ul>
+                        </div>
+                    })}
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default ExcludeInclude

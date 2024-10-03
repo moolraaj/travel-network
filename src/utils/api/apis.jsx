@@ -63,6 +63,16 @@ export const EXPORT_ALL_APIS = () => {
         let result = await resp.json()
         return result
     }
+    const fetchTestimonialsApi = async () => {
+        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/testimonials?fields=acf&acf_format=standard`)
+        let result = await resp.json()
+        return result
+    }
+    const fetchSinglePackagesApi = async (slug) => {
+        let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/packages?slug=${slug}&fields=acf&acf_format=standard`)
+        let result = await resp.json()
+        return result
+    }
     const fetchDestinationsFilterPackages = async (slug) => {
         let resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/destination?slug=${slug}&fields=acf&acf_format=standard`);
         let result = await resp.json();
@@ -133,6 +143,8 @@ export const EXPORT_ALL_APIS = () => {
         fetchAllPackagecategories,
         fetchAllPackages,
         fetchHeaderFooterApi,
+        fetchTestimonialsApi,
+        fetchSinglePackagesApi,
         fetchDestinationsFilterPackages,
         fetchCategoriesFilterPackages,
         submitBookingQuery,

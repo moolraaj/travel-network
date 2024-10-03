@@ -1,9 +1,13 @@
 import React from 'react'
+import InnerslugPage from './components/InnerslugPage'
+import TopBanner from '@/app/Components/topBanner'
 
 function page({params}) {
+  let {innerslug}=params
   return (
    <>
-   <h1>this is a nested page slug</h1>
+    
+   <InnerslugPage slug={innerslug}/>
    </>
   )
 }
