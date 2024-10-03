@@ -1,12 +1,13 @@
+import InnerslugPage from '@/app/destinations/[slug]/[innerslug]/components/InnerslugPage'
 import React from 'react'
 
 function page({params}) {
     let {slug}=params
 
-    console.log(slug)
+   
   return (
    <>
-   <h1> this is nexted tour pages slug</h1>
+ <InnerslugPage slug={slug}/>
    </>
   )
 }

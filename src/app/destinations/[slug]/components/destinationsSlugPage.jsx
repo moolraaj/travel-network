@@ -3,6 +3,7 @@ import TourDetails from '@/app/tour-packages/components/tourdetails'
 import { EXPORT_ALL_APIS } from '@/utils/api/apis'
 import React, { useEffect, useState } from 'react'
 import DestinationsTourDetails from './destinationsPackages'
+import TopBar from './topBar'
 
 function DestinationsSlugPage({slug}) {
     let api=EXPORT_ALL_APIS()
@@ -17,9 +18,12 @@ function DestinationsSlugPage({slug}) {
     },[])
 
     console.log(allPackages)
+
+   
     
   return (
      <>
+     <TopBar/>
       <DestinationsTourDetails allPackages={allPackages} slug={slug}/>
      </>
   )
