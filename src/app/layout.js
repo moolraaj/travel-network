@@ -2,9 +2,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import './css/style.scss'
 import Layout from "./_common/layout/layout";
-import { AllPackagesProvider, ContextProvider } from "@/context/contextProviders";
- 
- 
+import { ContextProvider } from "@/context/contextProviders";
+import { Toaster } from 'sonner';
+
 
 export const metadata = {
   title: "Travel Network",
@@ -15,9 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="travel-network-page">
+        <Toaster  position="top-right" />
         <Layout>
           <ContextProvider>
-          {children}
+            {children}
           </ContextProvider>
         </Layout>
       </body>

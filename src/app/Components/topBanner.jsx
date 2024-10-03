@@ -1,7 +1,7 @@
 import React from 'react'
 
 function TopBanner({result}) {
-    console.log(result)
+ 
   return (
      <>
      <div className="section_outer container-two">

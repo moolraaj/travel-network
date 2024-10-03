@@ -50,7 +50,7 @@ const TestimonialsSection = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  console.log(result)
+   
   return (
     <section className="container testimonials-section">
       <h2>What Our Users Say</h2>

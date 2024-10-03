@@ -1,8 +1,9 @@
 import { EXPORT_ALL_APIS } from '@/utils/api/apis';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { toast } from 'sonner';
 
 function ContactUs() {
-    let api = EXPORT_ALL_APIS()
+    let api = EXPORT_ALL_APIS();
 
     let [resp, setResp] = useState({
         yourname: '',
@@ -12,6 +13,7 @@ function ContactUs() {
     });
 
     let [errors, setErrors] = useState({});
+    let [loading, setLoading] = useState(false);
 
     let getInputHandel = (e) => {
         let { name, value } = e.target;
@@ -20,13 +22,11 @@ function ContactUs() {
     };
 
     let validateEmail = (email) => {
-
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
 
     let validatePhoneNumber = (phoneNumber) => {
-
         const phoneRegex = /^[0-9]{10}$/;
         return phoneRegex.test(phoneNumber);
     };
@@ -46,7 +46,7 @@ function ContactUs() {
             errorFields.youremail = 'Email is required';
         } else if (!validateEmail(youremail)) {
             valid = false;
-            errorFields.youremail = 'please provide valif email';
+            errorFields.youremail = 'Please provide a valid email';
         }
 
         if (!phonenumber) {
@@ -67,34 +67,44 @@ function ContactUs() {
     };
 
     let handleSubmit = async () => {
-
         if (handelFormError()) {
-            let formData = new FormData()
-            formData.append('_wpcf7_unit_tag', 81)
-            formData.append('yourname', resp.yourname)
-            formData.append('youremail', resp.youremail)
-            formData.append('phonenumber', resp.phonenumber)
-            formData.append('yourmessage', resp.yourmessage)
-        
-        let data = await api.submitContactQuery(formData)
-        if (data) {
-            console.log(data)
-           setResp({
-            yourname: '',
-            youremail: '',
-            phonenumber: '',
-            yourmessage: '',
-        })
+            let formData = new FormData();
+            formData.append('_wpcf7_unit_tag', 81);
+            formData.append('yourname', resp.yourname);
+            formData.append('youremail', resp.youremail);
+            formData.append('phonenumber', resp.phonenumber);
+            formData.append('yourmessage', resp.yourmessage);
+
+            setLoading(true); 
+
+            try {
+                let data = await api.submitContactQuery(formData);
+
+                if (data) {
+                    toast.success(`Dear ${resp.yourname}, your query has been sent successfully.`);
+                    setResp({
+                        yourname: '',
+                        youremail: '',
+                        phonenumber: '',
+                        yourmessage: '',
+                    });
+                } else {
+                    toast.error('Failed to send the query. Please try again.');
+                }
+            } catch (error) {
+                toast.error('Something went wrong. Please try again later.');
+            } finally {
+                setLoading(false);  
+            }
         }
-    }
     };
+
     return (
         <>
             <div className="contact-form-section">
                 <div className="left">
                     <h2>Send Us Message</h2>
                     <div className="form-container">
-
                         <input
                             type="text"
                             name="yourname"
@@ -135,9 +145,8 @@ function ContactUs() {
                         {errors.yourmessage && <p className="error">{errors.yourmessage}</p>}
 
                         <button type="submit" className="btn" onClick={handleSubmit}>
-                            Send Message
+                            {loading ? 'Please wait, sending...' : 'Sent Message'}
                         </button>
-
                     </div>
                 </div>
                 <div className="right">

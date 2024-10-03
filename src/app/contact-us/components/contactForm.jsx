@@ -2,7 +2,7 @@ import ContactUs from "./contactUs";
 import { FaMapMarkedAlt, FaMobileAlt} from 'react-icons/fa';
 
 const ContactForm = ({result}) => {
-  console.log(result)
+   
   return (
     <div className="container">
       <div className="contact-address-section">

@@ -52,7 +52,6 @@ export function ContextProvider({ children }) {
                 setPrivacyPage(privacyPageResp)
                 setPlanPage(planPageResp)
                 setTestimonilals(testiPostResp)
-             
         };
         loadPackagesData();  
     }, []); 

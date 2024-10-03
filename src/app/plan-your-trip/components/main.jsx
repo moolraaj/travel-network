@@ -4,6 +4,7 @@ import { AllPackages } from '@/context/contextProviders';
 import { EXPORT_ALL_APIS } from '@/utils/api/apis';
 import Link from 'next/link';
 import { useContext, useState } from 'react';
+import { toast } from 'sonner';
 
 const PlanATrip = () => {
 
@@ -13,6 +14,7 @@ const PlanATrip = () => {
 
 
   let api = EXPORT_ALL_APIS()
+  let [loading,setLoading]=useState(false)
 
   const [formData, setFormData] = useState({
     type_of_travels: '',
@@ -35,6 +37,10 @@ const PlanATrip = () => {
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
+    }));
+    setErrors((prevErrors) => ({
+     ...prevErrors,
+      [name]: '',
     }));
   };
   const validateForm = () => {
@@ -61,10 +67,12 @@ const PlanATrip = () => {
     });
     formDataToSubmit.append('_wpcf7_unit_tag', '273');
 
+    setLoading(true)
     const result = await api.submitPlanATripQuery(formDataToSubmit);
 
 
     if (result) {
+      toast.success(`Dear ${formData.yourname}, your query was successfully submitted`)
       setFormData({
         type_of_travels: '',
         conveyance_of_travel: '',
@@ -80,10 +88,11 @@ const PlanATrip = () => {
         yournumber: '',
       });
       setErrors({});
+      setLoading(false)
     }
   };
 
-  console.log(destinations)
+ 
 
   return (
 
@@ -192,7 +201,9 @@ const PlanATrip = () => {
                   </div>
                 </div>
 
-                <button onClick={handleSubmit}>Submit</button>
+                <button onClick={handleSubmit}>{
+                loading?'submiting...':
+                'Submit'}</button>
               </div>
           
             </div>
