@@ -20,7 +20,7 @@ const DestinationsTourDetails = ({ allPackages, slug }) => {
           <div className="packages-grid">
             {isLoading ? (
               <div>Loading...</div>
-            ) : packages.length === 0 ? (
+            ) : packages?.length === 0 || packages===null || packages===undefined? (
               <div>No packages found.</div>
             ) : (
               packages.map((packageGroup, groupIndex) => {

@@ -41,6 +41,8 @@ const TabTourPackages = () => {
     }
   }, [selectedCategory]);
 
+  console.log(packages)
+
   return (
     <>
     {isOpen&&<BookingForm setIsOpen={setIsOpen}/>}
