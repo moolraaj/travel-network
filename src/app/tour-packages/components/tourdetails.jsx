@@ -1,5 +1,6 @@
 'use client';
 
+import Sidebar from "@/app/_common/sidebar/sidebar";
 import { AllPackages } from "@/context/contextProviders";
 import { EXPORT_ALL_APIS } from "@/utils/api/apis";
 import Link from "next/link";
@@ -83,6 +84,7 @@ const TourDetails = ({ allPackages }) => {
                             <p><span>From</span> {packageItem.package_price}</p>
                           </div>
                           <button>Book Now</button>
+                          
                         </div>
                       </div>
                     </Link>
@@ -93,8 +95,10 @@ const TourDetails = ({ allPackages }) => {
               })
             )}
           </div>
+          
         </div>
       </div>
+     
     </div>
   );
 };
