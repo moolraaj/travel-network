@@ -2,8 +2,7 @@ import React from 'react';
 
 const HighlightsSection = ({ result }) => {
 
-    console.log(`result in abous us page`)
-    console.log(result)
+     
 
 
     return (
