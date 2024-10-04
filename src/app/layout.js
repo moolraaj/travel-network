@@ -15,12 +15,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="travel-network-page">
-        <Toaster  position="top-right" />
-        <Layout>
-          <ContextProvider>
+        <Toaster position="top-right" />
+        <ContextProvider>
+          <Layout>
             {children}
-          </ContextProvider>
-        </Layout>
+          </Layout>
+        </ContextProvider>
       </body>
     </html>
   );

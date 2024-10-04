@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
+import './globals.css';  
 
-function Loading() {
+function GlobalLoader() {
   return (
-    <>
-    <h1>Loading.......</h1>
-    </>
-  )
+    <div className="global-loaderr">
+      <div className="spinner"></div>
+      <p className="loading-text">Please wait Loading....</p>
+    </div>
+  );
 }
 
-export default Loading
+export default GlobalLoader;

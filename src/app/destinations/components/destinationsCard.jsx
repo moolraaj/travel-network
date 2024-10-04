@@ -9,6 +9,8 @@ function DestinationsCard({ destinations }) {
         localStorage.setItem('destinationImage', JSON.stringify({ name,image, index }));
     };
 
+  
+
     return (
         <>
             <div className="container destination_page_outer">

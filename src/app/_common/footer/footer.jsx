@@ -1,37 +1,21 @@
 'use client'
+
 import { AllPackages } from "@/context/contextProviders"
-import footerBg from '../../../../public/images/background.png'
-import { EXPORT_ALL_APIS } from "@/utils/api/apis"
+ 
 import Link from "next/link"
-import {   useEffect, useState } from "react"
+import {   useContext } from "react"
 
 
 function Footer({ result }) {
-  let api=EXPORT_ALL_APIS()
- let[data,setData]=useState([])
- useEffect(()=>{
-  let loadAlldestinations=async()=>{
-    let resp=await api.fetchAllDestinations()
-    setData(resp)
-  }
-  loadAlldestinations()
-
- },[])
- 
+  let {destinations}=useContext(AllPackages)
+  const handleClick = (name,image, index) => {
+    localStorage.removeItem('destinationImage');
+    localStorage.setItem('destinationImage', JSON.stringify({ name,image, index }));
+};
   let { footer = {} } = result
-
-  let links=data?.map((e)=>e?.slug)
- 
-  
   return (
     <>
-
-      <section className="footer_section"  
-        style={{
-            backgroundImage: `url(${footerBg.src})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}>
+      <section className="footer_section">
         <div className='footer_outer'>
           <div className="footer_inner_section container">
             <div className='footer-top'>
@@ -39,7 +23,9 @@ function Footer({ result }) {
               <div className="footer_top_section_wrapper">
 
                 <div className="footer_logo">
+                  <Link href={'/'}>
                   <img src={footer?.siteLogoUrl} alt='footer_logo' />
+                  </Link>
                   <div className="bottom_description">
                     <p>{footer?.textAfterLogo}</p>
                   </div>
@@ -52,9 +38,9 @@ function Footer({ result }) {
                   <div className="footer_links">
                     <ul>
                       <li>
-                        {links?.slice(0,6)?.map((e, index) =>
+                        {destinations?.slice(0,6)?.map((e, index) =>
                           <li key={index}>
-                            <Link href={`/destinations/${e}`}>{e}</Link>
+                            <Link href={`/destinations/${e?.slug}`} onClick={() => handleClick(e.name,e?.destination_image, index)}>{e?.name}</Link>
                           </li>
                         )}
                       </li>
@@ -100,14 +86,13 @@ function Footer({ result }) {
                 </div>
               </div>
             </div>
-            <div className='copyright_section'>
-              <div className='copyright_bar_inner'>
-                <p>{footer?.copyrightTextFirst}</p>
-              </div>
-            </div>
           </div>
 
-        
+          <div className='copyright_section'>
+            <div className='copyright_bar_inner'>
+              <p>{footer?.copyrightTextFirst}</p>
+            </div>
+          </div>
         </div>
       </section>
     </>
