@@ -44,6 +44,8 @@ const TabTourPackages = () => {
   
  
  
+  console.log(`packages`)
+  console.log(packages)
 
   return (
     <>
@@ -68,8 +70,6 @@ const TabTourPackages = () => {
         <div className="packagesContainer">
           {packages?.map((filterPackage, index) => {
             const result = filterPackage?.acf?.all_packages;
-
-            
             if (Array.isArray(result)) {
               return result.map((pkg, pkgIndex) => (
                 <div key={`${index}-${pkgIndex}`} className="packageCard">

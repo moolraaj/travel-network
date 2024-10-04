@@ -39,7 +39,9 @@ function Footer({ result }) {
               <div className="footer_top_section_wrapper">
 
                 <div className="footer_logo">
+                  <Link href={'/'}>
                   <img src={footer?.siteLogoUrl} alt='footer_logo' />
+                  </Link>
                   <div className="bottom_description">
                     <p>{footer?.textAfterLogo}</p>
                   </div>

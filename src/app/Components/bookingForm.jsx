@@ -111,7 +111,7 @@ function BookingForm({ setIsOpen }) {
                         <h2>Send Us a Query</h2>
                         <button onClick={() => setIsOpen(false)}>X</button>
                         </div>
-                        <div className="form-container">
+                        <div className="booking-form-container">
                             <div className="input_wrapper">
                                 <label htmlFor="name">Name</label>
                                 <input
