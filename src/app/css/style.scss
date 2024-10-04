@@ -1,6 +1,26 @@
 @import "variable";
 @import "mixins";
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @font-face {
   font-family: "Nunito";
   src: url("../../app/fonts/Nunito-ExtraLight.ttf") format("truetype");
@@ -66,6 +86,128 @@ body {
 a {
   text-decoration: none;
 }
+
+
+
+
+.booking_form_outer {
+  position: fixed;
+  z-index: 9999;
+  background: #00000080;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+}
+
+.booking-form-overlay {
+  padding: 0px 20px;
+  height: 100vh;
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.left_section_booking {
+  background: #fff;
+  padding: 38px;
+  border-radius: 4px;
+  width: 100%;
+  
+}
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.input_wrapper:nth-child(5) {
+  grid-column: 1/3;
+  
+}
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.input_wrapper input {
+  background:  #F5FBFC;
+  padding: 18px 16px;
+  border: 1px solid #84D1DFCC;
+  border-radius: 4px;
+}
+.input_wrapper label {
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 400;
+}
+input,textarea.input-field::placeholder {
+  font-size: 16px;
+}
+.input_wrapper textarea {
+  background:  #F5FBFC;
+  padding: 18px 16px;
+  border: 1px solid #84D1DFCC;
+  border-radius: 4px;
+  height:85px;
+}
+
+.button_handler {
+  grid-column: 1/3;
+  justify-content: end;
+  display: flex;
+  margin-top: 18px;
+}
+.button_handler button {
+  padding: 18px 40px;
+  background: #046271;
+  border: unset;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.heading_button_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.heading_button_wrapper h2 {
+  margin: 0px;
+  font-size: 40px;
+  color: #046271;
+}
+
+.heading_button_wrapper button {
+  padding: 8px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  border: unset;
+  background:  #046271;
+  color: #fff;
+  border-radius: 4px;
+}
+
+
+
+.left_section_booking button {
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
 
 .container {
   max-width: 1320px;

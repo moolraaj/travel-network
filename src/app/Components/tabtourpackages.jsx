@@ -41,7 +41,9 @@ const TabTourPackages = () => {
     }
   }, [selectedCategory]);
 
-  console.log(packages)
+  
+ 
+ 
 
   return (
     <>
@@ -71,6 +73,7 @@ const TabTourPackages = () => {
             if (Array.isArray(result)) {
               return result.map((pkg, pkgIndex) => (
                 <div key={`${index}-${pkgIndex}`} className="packageCard">
+               
                   <Link href={`/destinations/${filterPackage.slug}`}>
                     <img src={pkg.package_image} alt={pkg.package_title} className="packageImage" />
                     <h3 className="packageTitle">{pkg.package_title}</h3>

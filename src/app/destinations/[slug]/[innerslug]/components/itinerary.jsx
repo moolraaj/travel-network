@@ -7,7 +7,10 @@ function Itinerary({ response }) {
     const toggleAccordion = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
-    
+
+    console.log(`response`)
+    console.log(response)
+
     return (
         <>
 
@@ -21,10 +24,10 @@ function Itinerary({ response }) {
                 {/*top highlights section */}
                 <div className="top_highlights">
                     <h2 className='section_heading'>Top Highlights</h2>
-                    {response?.top_highlights?.map((e, index) => {
+                    {response?.top_highlights===false?'no result found':response?.top_highlights?.map((e, index) => {
 
                         return <ul className='highlights' key={index}>
-                            <FaCheckCircle/> <li>{e?.trip_details}</li>
+                            <FaCheckCircle /> <li>{e?.trip_details}</li>
                         </ul>
                     })}
                 </div>
@@ -33,14 +36,14 @@ function Itinerary({ response }) {
 
                 <div className="itinerary_section">
                     <h2 className='section_heading'>Itinerary</h2>
-                    {response?.package_itinerary?.map((e, index) => {
-                        const isOpen = openIndex === index;  
+                    {response?.package_itinerary===false?'no result found':response?.package_itinerary?.map((e, index) => {
+                        const isOpen = openIndex === index;
                         return (
                             <div className="accordian_wrapper" key={index}>
                                 <div className="accordian_qst" onClick={() => toggleAccordion(index)}>
                                     <h3>{e?.itinerary_title}</h3>
                                     <span className={`accordion-icon ${isOpen ? 'open' : ''}`}>
-                                        {isOpen ? <FaMinusCircle/> : <FaPlusCircle/>}
+                                        {isOpen ? <FaMinusCircle /> : <FaPlusCircle />}
                                     </span>
                                 </div>
                                 {isOpen && (
