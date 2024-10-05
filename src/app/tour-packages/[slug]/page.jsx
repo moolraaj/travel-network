@@ -4,6 +4,9 @@ import React from 'react'
 function page({params}) {
     let {slug}=params
 
+    console.log(`slug sajdfjaskldjfjkasdjf jsadjfklasjdfkasdjflasdfd`)
+    console.log(slug)
+
    
   return (
    <>

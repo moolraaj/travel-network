@@ -1121,7 +1121,7 @@ button:hover {
   flex-wrap: wrap;
   gap: 30px;
   justify-content: space-between;
-  margin-top: 30px;
+  padding: 50px 0px;
   .right-side-slug {
     width: 67%;
   }
@@ -1413,7 +1413,7 @@ h3 {
     display: flex;
     align-items: center;
     gap: 20px;
-    justify-content: center;
+    justify-content: space-between;
     h3 {
       font-family: Nunito;
       font-size: 18px;
@@ -1544,9 +1544,9 @@ h3 {
   padding: 16px 0px;
 }
 }
-.tour_packages_outer {
-  margin-bottom: 50px;
-}
+// .tour_packages_outer {
+//   margin-bottom: 50px;
+// }
 
 
 

@@ -25,7 +25,7 @@ const TourDetails = ({ allPackages }) => {
     setIsLoading(true);
     try {
       if (slug === 'all') {
-        setPackages(allPackages);  // Show all packages if 'all' is selected
+        setPackages(allPackages);   
       } else {
         const resp = await api.fetchCategoriesFilterPackages(slug);
         setPackages(resp);
@@ -33,7 +33,7 @@ const TourDetails = ({ allPackages }) => {
     } catch (error) {
       console.error("Error fetching packages:", error);
     } finally {
-      setIsLoading(false);  // Stop loading
+      setIsLoading(false);   
     }
   };
 
@@ -65,6 +65,7 @@ const TourDetails = ({ allPackages }) => {
             ) : (
               packages.map((packageGroup, groupIndex) => {
                 const packagesArray = packageGroup?.acf?.all_packages;
+                const destination = packageGroup?.destination[0];
                 if (Array.isArray(packagesArray)) {
                   return packagesArray.map((packageItem, index) => (
                     <Link href={`/tour-packages/${packageGroup?.slug}`}>

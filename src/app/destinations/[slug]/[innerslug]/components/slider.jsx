@@ -17,7 +17,7 @@ function Slider({ response }) {
   useEffect(() => {
     const slideInterval = setInterval(() => {
       nextSlide();
-    }, 20200);  
+    }, 5000);  
 
     return () => clearInterval(slideInterval);  
   }, [response?.packages_galleries.length]);

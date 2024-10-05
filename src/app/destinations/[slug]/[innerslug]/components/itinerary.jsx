@@ -8,8 +8,7 @@ function Itinerary({ response }) {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    console.log(`response`)
-    console.log(response)
+    
 
     return (
         <>
