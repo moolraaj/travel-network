@@ -2,6 +2,9 @@ import ContactUs from "./contactUs";
 import { FaMapMarkedAlt, FaMobileAlt} from 'react-icons/fa';
 
 const ContactForm = ({result}) => {
+
+  console.log(`result`)
+  console.log(result)
    
   return (
     <div className="container">
@@ -11,7 +14,7 @@ const ContactForm = ({result}) => {
             <div className="icon-addres-card"> <FaMapMarkedAlt size={30}/> </div>
             <div className="card-txt">
               <h2>Address</h2>
-              <a href={`mailto:${result?.address}`}> {result?.address}</a>
+              <a>{result?.address}</a>
              
             </div>
           </div>
