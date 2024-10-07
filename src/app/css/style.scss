@@ -712,6 +712,7 @@ button:hover {
   }
 
   .packageCard img {
+    height: 255px;
     width: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -903,7 +904,7 @@ button:hover {
 }
 .navbar.inner.active {
   position: fixed;   
-  top: 0;         
+  top: 0;     
   width: 1320px;    
   z-index: 1000;     
   background-color: #ffffff;  
@@ -1686,7 +1687,8 @@ flex-wrap: wrap;
   }
   .navbar.inner.active {
     max-width: 1320px;
-    width: 96%; 
+    width: 100%; 
+    left: 0;
 }
 
 }
@@ -1796,6 +1798,9 @@ flex-wrap: wrap;
 }
 
 @media ( max-width: 425px) {
+  .destinations-grid, .packages-grid {
+    padding: 20px 0px;
+  }
   .plan_your_trip .plan_trip_form {
     width: 100%;
 }
