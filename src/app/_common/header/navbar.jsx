@@ -49,7 +49,7 @@ function Navbar({ result }) {
     <>
       {isOpen && <BookingForm setIsOpen={setIsOpen} />}
 
-      <div className="container">
+      <div className="container navbar_wrapper_outer">
         <div className={`navbar inner ${isScrolled ? "active" : ""}`}>
           <div className="navbar_wrapper">
             <div className="navbar_section_first">

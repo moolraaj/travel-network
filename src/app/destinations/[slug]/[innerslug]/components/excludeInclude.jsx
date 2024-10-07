@@ -1,8 +1,14 @@
-import React from 'react'
+'use client'
+import BookingForm from '@/app/Components/bookingForm';
+ 
 import { FaCheckCircle, FaTimesCircle} from 'react-icons/fa';
-function ExcludeInclude({ response }) {
+function ExcludeInclude({ response,setIsOpen }) {
+    
+     
+ 
     return (
         <>
+       
             <div className="container package_inc_exc_wrapper">
                 <h2 className='section_heading'>Tour Inclusions & Exclude</h2>
 
@@ -27,7 +33,10 @@ function ExcludeInclude({ response }) {
                         </div>
                     })}
                 </div>
+                <button id="bookButton" style={{marginTop:'12px'}} onClick={()=>setIsOpen(true)}>Book Now</button>
             </div>
+
+            
         </>
     )
 }

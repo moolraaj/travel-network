@@ -8,7 +8,7 @@ import Link from 'next/link';
 const TourPackages = () => {
   let [isOpen, setIsOpen] = useState(false);
   
-  // Sample data object for title and description
+  
   const data = {
     tourPackages: {
       title: "Tour Packages",
@@ -16,7 +16,7 @@ const TourPackages = () => {
     }
   };
 
-  // Access allPackages from context
+  
   let { allPackages } = useContext(AllPackages);
 
   return (
@@ -50,7 +50,14 @@ const TourPackages = () => {
                           <strong>Days {packageItem.package_days} / Nights {packageItem.packages_nights}</strong>
                           <p><span>From</span> {packageItem.package_price}</p>
                         </div>
-                        <button onClick={() => setIsOpen(true)}>Book Now</button>
+                        <button
+                          onClick={(e) => {
+                           e.preventDefault()
+                            setIsOpen(true);      
+                          }}
+                        >
+                          Book Now
+                        </button>
                       </div>
                     </div>
                   </Link>

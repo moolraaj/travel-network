@@ -14,6 +14,7 @@ const TabTourPackages = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);  
   const [packages, setPackages] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+ 
 
   // Fetch packages based on category slug
   const fetchPackages = async (slug) => {
@@ -44,8 +45,7 @@ const TabTourPackages = () => {
   
  
  
-  console.log(`packages`)
-  console.log(packages)
+ 
 
   return (
     <>

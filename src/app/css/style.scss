@@ -90,6 +90,11 @@ a {
   text-decoration: none;
 }
 
+.navbar_wrapper_outer {
+  position: relative;
+  z-index: 9999;
+}
+
 
 .privacy_outer {
   max-width: 1320px;
@@ -503,7 +508,20 @@ section.highlight {
   overflow: hidden;
   border-radius: 10px;
   top:-83px;
-  z-index: -1;
+  z-index: 1;
+}
+
+#bookButton{
+  height: 40px;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    background: #046271;
+    border-radius: 5px;
+    width: 120px;
+    font-weight: 400;
+    font-family: "Nunito";
+    letter-spacing: 0.5px;
 }
 
 /* Individual slide styling */
@@ -1547,6 +1565,8 @@ h3 {
 // .tour_packages_outer {
 //   margin-bottom: 50px;
 // }
+
+
 
 
 
