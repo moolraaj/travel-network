@@ -717,6 +717,7 @@ button:hover {
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
+    text-transform: capitalize;
   }
   .tab-packages.active {
     background: $main-color;
