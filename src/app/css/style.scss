@@ -587,7 +587,7 @@ button:hover {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
   gap: 20px;
   width: 100%;
-  padding: 50px 0px;
+  padding: 30px 0px;
   
 }
 // .destination_page_inner {
@@ -618,9 +618,11 @@ button:hover {
 .packages-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
- 
   gap: 30px;
-  padding: 50px 0px;
+  padding: 30px 0px;
+}
+.destination_page_outer, .tour_packages_outer {
+  padding: 20px;
 }
 .package {
   background-color: $white-color;
@@ -1380,7 +1382,7 @@ h3 {
 }
 
   .slider-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #d8f0f5;
   }
 
   .prev-button {
