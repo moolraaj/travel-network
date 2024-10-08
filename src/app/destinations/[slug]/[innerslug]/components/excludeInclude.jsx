@@ -3,9 +3,6 @@ import BookingForm from '@/app/Components/bookingForm';
  
 import { FaCheckCircle, FaTimesCircle} from 'react-icons/fa';
 function ExcludeInclude({ response,setIsOpen }) {
-    
-     
- 
     return (
         <>
        
