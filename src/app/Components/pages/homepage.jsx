@@ -1,5 +1,5 @@
 'use client'
-import React, {  useContext } from 'react'
+import React, { useContext } from 'react'
 import Slider from '../herosection'
 import PopularDestinations from '../populardestination'
 import TourPackages from '../tourpackages'
@@ -9,18 +9,18 @@ import TestimonialsSection from '../testimonial'
 import { AllPackages } from '@/context/contextProviders'
 const HomePage = () => {
 
-  let {homePage}=useContext(AllPackages)
+  let { homePage } = useContext(AllPackages)
 
-   
+
   return (
     <>
-    <Slider result={homePage}/>
-   <PopularDestinations  />
-   <TourPackages   />
-   <TabTourPackages/>
-   <AboutSection result={homePage}/>
-   <TestimonialsSection result={homePage}/>
-   </>
+      <Slider result={homePage} />
+      <PopularDestinations />
+      <TourPackages />
+      <TabTourPackages />
+      <AboutSection result={homePage} />
+      <TestimonialsSection result={homePage} />
+    </>
   );
 };
 

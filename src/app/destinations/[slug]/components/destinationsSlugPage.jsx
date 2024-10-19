@@ -1,5 +1,4 @@
 'use client'
-import TourDetails from '@/app/tour-packages/components/tourdetails'
 import { EXPORT_ALL_APIS } from '@/utils/api/apis'
 import React, { useEffect, useState } from 'react'
 import DestinationsTourDetails from './destinationsPackages'
@@ -12,12 +11,13 @@ function DestinationsSlugPage({slug}) {
     useEffect(()=>{
         let loadAllfilterPackages=async()=>{
             let resp=await api.fetchDestinationsFilterPackages(slug)
-            setAllPackages(resp)
+            setAllPackages(resp)                   
+
         }
         loadAllfilterPackages()
     },[])
 
-    console.log(allPackages)
+ 
 
    
     
@@ -30,3 +30,15 @@ function DestinationsSlugPage({slug}) {
 }
 
 export default DestinationsSlugPage
+
+
+
+
+
+
+
+
+
+
+
+

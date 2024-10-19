@@ -1,6 +1,7 @@
 import React from 'react'
 import DestinationPage from './components/destinationPage'
 
+
 function page() {
   return (
     <>
@@ -10,3 +11,6 @@ function page() {
 }
 
 export default page
+
+
+ 

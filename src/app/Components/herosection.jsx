@@ -21,11 +21,8 @@ const Slider = ({ result }) => {
   }, [slider]);
 
   const setFromHandler=()=>{
-    setIsOpen(true)
-    console.log('fgsdfgs')
+    setIsOpen(true)    
   }
-
-
 
   return (
     <>

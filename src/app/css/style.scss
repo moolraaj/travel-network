@@ -117,7 +117,7 @@ a {
 
 .booking_form_outer {
   position: fixed;
-  z-index: 9999;
+  z-index: 999999;
   background: #00000080;
   height: 100%;
   top: 0;
@@ -1394,6 +1394,8 @@ h3 {
   }
 }
 
+
+
 .itinerary_wrapper {
   .section_heading {
     font-family: Nunito;
@@ -1818,6 +1820,20 @@ flex-wrap: wrap;
   .contact-form-section .form-container {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width:600px){
+  .booking-form-container {
+    display: block!important;
+  
+}
+}
+@media (max-width:480px){
+  .left_section_booking {
+    
+    padding: 38px 22px;
+    
+}
 }
 
 @media ( max-width: 425px) {

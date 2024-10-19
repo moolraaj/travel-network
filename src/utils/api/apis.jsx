@@ -79,6 +79,7 @@ export const EXPORT_ALL_APIS = () => {
         let destinationId = result[0]?.id.toString()
         if (!destinationId) {
             console.log('no destination id found')
+            return null
         } else {
 
             let response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wp-json/wp/v2/packages?destination=${destinationId}&fields=acf&acf_format=standard`);

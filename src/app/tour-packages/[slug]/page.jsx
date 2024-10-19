@@ -1,11 +1,11 @@
-import InnerslugPage from '@/app/destinations/[slug]/[innerslug]/components/InnerslugPage'
-import React from 'react'
+ import React from 'react'
+import InnerslugPage from './components/tourInnerSlug'
+import { EXPORT_ALL_APIS } from '@/utils/api/apis'
 
 function page({params}) {
     let {slug}=params
 
-    console.log(`slug sajdfjaskldjfjkasdjf jsadjfklasjdfkasdjflasdfd`)
-    console.log(slug)
+ 
 
    
   return (
@@ -16,3 +16,9 @@ function page({params}) {
 }
 
 export default page
+
+ 
+
+
+
+ 

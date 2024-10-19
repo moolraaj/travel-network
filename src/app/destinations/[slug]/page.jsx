@@ -1,4 +1,5 @@
-import React from 'react'
+ 
+
 import DestinationsSlugPage from './components/destinationsSlugPage'
 
 function page({params}) {
@@ -13,3 +14,7 @@ function page({params}) {
 }
 
 export default page
+
+
+ 
+ 
